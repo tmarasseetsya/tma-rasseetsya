@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Site Footer Montserrat";
+  src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Site Footer Cormorant";
+  src: url("./fonts/CormorantGaramond-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+.site-footer {
+  --site-footer-frame: 1440px;
+  --site-footer-cream: #eee9d6;
+  --site-footer-muted: #858883;
+  width: 100%;
+  height: 392px;
+  background-image: url("./images/элементы подвала/подвал фон.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% 100%;
+}
+
+.site-footer-frame {
+  position: relative;
+  width: var(--site-footer-frame);
+  height: 392px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.site-footer-columns {
+  position: absolute;
+  top: 40px;
+  left: 120px;
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  width: 1200px;
+}
+
+.site-footer-column {
+  display: grid;
+  grid-template-rows: 20px 50px 84px;
+  justify-items: center;
+  row-gap: 8px;
+  min-width: 0;
+}
+
+.site-footer-column p {
+  width: 300px;
+  margin: 0;
+  font-family: "Site Footer Montserrat", Montserrat, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.site-footer-column-title {
+  grid-row: 1;
+  color: var(--site-footer-cream);
+  line-height: 1;
+}
+
+.site-footer-column-note {
+  grid-row: 2;
+  color: var(--site-footer-muted);
+  line-height: 1.3;
+}
+
+.site-footer-icon {
+  position: relative;
+  grid-row: 3;
+  display: block;
+  width: 83px;
+  height: 84px;
+  transform: scale(0.8);
+  transform-origin: top center;
+}
+
+.site-footer-spell,
+.site-footer-symbol {
+  position: absolute;
+  display: block;
+}
+
+.site-footer-spell {
+  top: 0;
+  left: 0;
+  width: 83px;
+  height: 84px;
+}
+
+.site-footer-symbol-mail {
+  top: 48px;
+  left: 26px;
+  width: 33px;
+  height: 23px;
+}
+
+.site-footer-symbol-telegram {
+  top: 46px;
+  left: 24px;
+  width: 30px;
+  height: 27px;
+}
+
+.site-footer-symbol-youtube {
+  top: 47px;
+  left: 26px;
+  width: 34px;
+  height: 25px;
+}
+
+.site-footer-signature {
+  position: absolute;
+  top: 230px;
+  left: 50%;
+  width: max-content;
+  margin: 0;
+  color: var(--site-footer-cream);
+  font-family: "Site Footer Cormorant", serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}

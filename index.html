@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="«Тьма рассеется» — просветительский проект о сексуализированном насилии."
+    />
+    <title>Тьма рассеется</title>
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const storageKey = "darkness-disperses:intro-seen";
+        const returnFromGuideKey = "darkness-disperses:return-from-guide";
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const navigationEntry = performance.getEntriesByType("navigation")[0];
+        const isReload = navigationEntry
+          ? navigationEntry.type === "reload"
+          : performance.navigation?.type === 1;
+        let wasShown = false;
+        let cameFromGuide = false;
+        let hasGuideReturnMarker = false;
+
+        try {
+          const referrer = new URL(document.referrer);
+          cameFromGuide = !isReload && referrer.pathname.endsWith("/guide.html");
+        } catch {
+          // Empty or unavailable referrer is fine; the session marker below is the fallback.
+        }
+
+        try {
+          wasShown = sessionStorage.getItem(storageKey) === "seen";
+          hasGuideReturnMarker = sessionStorage.getItem(returnFromGuideKey) === "1";
+          sessionStorage.removeItem(returnFromGuideKey);
+          sessionStorage.setItem(storageKey, "seen");
+        } catch {
+          // The intro still works when storage is unavailable.
+        }
+
+        const shouldSkipGuideReturn = cameFromGuide || hasGuideReturnMarker;
+        const shouldShow = !reducedMotion && !shouldSkipGuideReturn && (isReload || !wasShown);
+
+        if (!shouldShow) {
+          return;
+        }
+
+        root.classList.add("site-intro-pending", "site-intro-dark");
+        window.__siteIntroFallback = window.setTimeout(() => {
+          root.classList.remove("site-intro-pending", "site-intro-dark", "site-intro-reveal");
+          document.getElementById("site-intro")?.remove();
+          document.querySelector(".home-page")?.removeAttribute("inert");
+          document.body?.removeAttribute("aria-busy");
+        }, 6800);
+      })();
+    </script>
+    <link rel="stylesheet" href="./home.css" />
+    <link rel="stylesheet" href="./footer.css" />
+  </head>
+  <body>
+    <div class="site-intro" id="site-intro" aria-hidden="true">
+      <div class="site-intro__scene">
+        <div class="site-intro__castle site-intro__castle--structure"></div>
+        <div class="site-intro__castle site-intro__castle--lights"></div>
+        <div class="site-intro__castle site-intro__castle--glow"></div>
+      </div>
+      <div class="site-intro__lights"></div>
+    </div>
+
+    <main class="home-page">
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="home-frame">
+          <h1 class="home-title" id="home-title">
+            <span>Тьма</span>
+            <span>рассеется</span>
+          </h1>
+
+          <p class="home-subtitle">
+            просветительский проект<br />
+            о сексуализированном насилии
+          </p>
+
+          <p class="home-description">
+            Здесь мы собираем полезные материалы для Переживших<br />
+            сексуализированное насилие, а в соцсетях создаём контент,<br />
+            направленный на борьбу с мифами о насилии
+          </p>
+
+          <button
+            class="home-site-map collapse-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="home-site-map-panel"
+            aria-label="Открыть карту сайта"
+            data-expand-label="Открыть карту сайта"
+            data-collapse-label="Скрыть карту сайта"
+          >
+            <span class="home-site-map-label">Открыть карту сайта</span>
+            <img
+              class="home-site-map-wand"
+              src="./images/палочка.png?v=20260713-3"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+            />
+          </button>
+
+          <section
+            class="home-site-map-section"
+            id="home-site-map-panel"
+            aria-label="Карта сайта"
+            hidden
+          >
+            <div class="home-site-map-stage">
+              <div class="site-map-vertical">
+                <img
+                  class="site-map-layer site-map-layer-state-1"
+                  src="./карта сайта в состоянии 1.png"
+                  alt=""
+                />
+                <img
+                  class="site-map-layer site-map-layer-state-2"
+                  src="./карта сайта в состоянии 2.png"
+                  alt=""
+                />
+              </div>
+
+              <div class="site-map-horizontal">
+                <img
+                  class="site-map-layer site-map-layer-state-3"
+                  src="./карта сайта в состоянии 3.png"
+                  alt=""
+                />
+                <img
+                  class="site-map-layer site-map-layer-state-4"
+                  src="./карта сайта в состоянии 4.png"
+                  alt=""
+                />
+              </div>
+
+              <div class="site-map-three" aria-hidden="true">
+                <canvas class="site-map-three-canvas"></canvas>
+              </div>
+
+              <nav class="site-map-actions" aria-label="Разделы карты сайта">
+                <a
+                  class="site-map-action site-map-action-primary site-map-action-guide"
+                  href="./guide.html"
+                >
+                  <span class="site-map-action-title">
+                    что есть<br />
+                    сексуализированное насилие?
+                  </span>
+                  <span class="site-map-action-list">
+                    определение<br />
+                    формы<br />
+                    подформы<br />
+                    контексты
+                  </span>
+                </a>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-answers"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  справочник ответов на мифы<br />
+                  и обесценивание опыта насилия
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-psychologists"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  справочник психологов,<br />
+                  работающих с темой насилия
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-organizations"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  справочник помогающих<br />
+                  организаций
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-test"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  тест “а не был ли я насильником?”:<br />
+                  рефлексия взрослого человека
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-teachers"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  учителям: всё для проведения<br />
+                  действительно важного классного часа
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-support-bot"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  тг-бот с поддержкой
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-trauma"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  к каким последствиям<br />
+                  приводит травма насилия?
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-statistics"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  визуализация статистики<br />
+                  сексуализированного насилия
+                </button>
+                <button
+                  class="site-map-action site-map-action-muted site-map-action-survivors"
+                  type="button"
+                  aria-disabled="true"
+                  data-site-map-disabled="true"
+                >
+                  обращение<br />
+                  к Пережившим насилие
+                </button>
+              </nav>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <footer class="site-footer" aria-label="Подвал сайта">
+        <div class="site-footer-frame">
+          <div class="site-footer-columns">
+            <section class="site-footer-column" aria-label="Связь с проектом">
+              <p class="site-footer-column-title">напишите по любым вопросам:</p>
+              <p class="site-footer-column-note">
+                в том числе если хотите стать волонтёркой проекта
+              </p>
+              <span class="site-footer-icon" aria-hidden="true">
+                <img
+                  class="site-footer-spell"
+                  src="./images/элементы подвала/подвал иконка заклинание.png"
+                  alt=""
+                />
+                <img
+                  class="site-footer-symbol site-footer-symbol-mail"
+                  src="./images/элементы подвала/подвал иконка почта.png"
+                  alt=""
+                />
+              </span>
+            </section>
+
+            <section class="site-footer-column" aria-label="Уведомления проекта">
+              <p class="site-footer-column-title">подпишитесь:</p>
+              <p class="site-footer-column-note">
+                на редкие уведомления<br />
+                о развитии проекта
+              </p>
+              <span class="site-footer-icon" aria-hidden="true">
+                <img
+                  class="site-footer-spell"
+                  src="./images/элементы подвала/подвал иконка заклинание.png"
+                  alt=""
+                />
+                <img
+                  class="site-footer-symbol site-footer-symbol-telegram"
+                  src="./images/элементы подвала/подвал иконка телеграм.png"
+                  alt=""
+                />
+              </span>
+            </section>
+
+            <section class="site-footer-column" aria-label="Видео проекта">
+              <p class="site-footer-column-title">подпишитесь:</p>
+              <p class="site-footer-column-note">на наши видео</p>
+              <span class="site-footer-icon" aria-hidden="true">
+                <img
+                  class="site-footer-spell"
+                  src="./images/элементы подвала/подвал иконка заклинание.png"
+                  alt=""
+                />
+                <img
+                  class="site-footer-symbol site-footer-symbol-youtube"
+                  src="./images/элементы подвала/подвал иконка ютуб.png"
+                  alt=""
+                />
+              </span>
+            </section>
+          </div>
+
+          <p class="site-footer-signature">Тьма рассеется</p>
+        </div>
+      </footer>
+    </main>
+    <script src="./script.js"></script>
+    <script src="./site-map-three.bundle.js?v=state5-feedback-1"></script>
+  </body>
+</html>

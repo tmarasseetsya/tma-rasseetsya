@@ -1,0 +1,1958 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сексуализированное насилие</title>
+    <script>
+      (() => {
+        const returnFromGuideKey = "darkness-disperses:return-from-guide";
+
+        const markReturnFromGuide = () => {
+          try {
+            sessionStorage.setItem(returnFromGuideKey, "1");
+          } catch {
+            // If storage is unavailable, index.html will still use document.referrer when possible.
+          }
+        };
+
+        document.addEventListener(
+          "click",
+          (event) => {
+            const link = event.target.closest?.("a[href]");
+
+            if (!link) {
+              return;
+            }
+
+            try {
+              const url = new URL(link.getAttribute("href"), window.location.href);
+
+              if (url.pathname.endsWith("/index.html")) {
+                markReturnFromGuide();
+              }
+            } catch {
+              // Ignore malformed links.
+            }
+          },
+          true
+        );
+
+        window.addEventListener("pagehide", markReturnFromGuide);
+      })();
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./footer.css" />
+  </head>
+  <body>
+    <main>
+      <section class="svetik-section" aria-label="Вступительный блок">
+        <div class="svetik-frame">
+          <a class="guide-back-link" href="./index.html" aria-label="Вернуться на главную">
+            <svg
+              class="guide-back-link-icon"
+              viewBox="0 0 32 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M28 12H5M14 3L5 12l9 9" />
+            </svg>
+          </a>
+
+          <div class="svetik-card">
+            <div class="svetik-copy">
+              <p class="svetik-intro">
+                Здесь собраны разные формы и&nbsp;контексты<br />
+                сексуализированного насилия<br />
+                — их признают международные источники, но&nbsp;порой обесценивает общество.
+              </p>
+
+              <p class="svetik-message">
+                Мы собрали их, чтобы сказать:<br />
+                <span>всё это — тоже насилие.</span>
+              </p>
+
+              <p class="svetik-support">
+                Мы выражаем большую поддержку каждому,<br />
+                кто пережил любую из&nbsp;этих форм.
+              </p>
+
+            </div>
+            <img
+              class="svetik-patronus"
+              src="./images/патронус Выдра.png"
+              alt=""
+              aria-hidden="true"
+            />
+          </div>
+
+          <details class="svetik-note">
+            <summary class="svetik-note-summary">
+              <span>* Наш список шире российского законодательства</span>
+              <svg
+                class="svetik-note-arrow"
+                viewBox="0 0 18 12"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 4.5 9 9.5 14 4.5" />
+              </svg>
+            </summary>
+            <p class="svetik-note-body">
+              Не все перечисленные здесь формы насилия признаются российским законодательством. Мы опираемся на более широкое международное понимание насилия — правовые нормы, судебные прецеденты и экспертные подходы разных стран и организаций.
+            </p>
+          </details>
+
+          <details class="svetik-note">
+            <summary class="svetik-note-summary">
+              <span>** Мы используем «сексуализированное» как полный синоним «сексуальному» насилию</span>
+              <svg
+                class="svetik-note-arrow"
+                viewBox="0 0 18 12"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 4.5 9 9.5 14 4.5" />
+              </svg>
+            </summary>
+            <p class="svetik-note-body">
+              Мы используем эту формулировку, потому что на этом настаивают пережившие насилие: слово «сексуальное» может создавать ложную связь с сексуальностью, хотя насилие связано не с сексом, а с принуждением, властью и нарушением границ.
+            </p>
+          </details>
+
+        </div>
+      </section>
+
+      <nav class="page-menu" aria-label="Разделы сайта">
+        <div class="page-menu-list">
+          <a class="page-menu-item" href="#definition" data-section-color="gold">[определение сн]</a>
+          <a class="page-menu-item" href="#forms" data-section-color="blue">[формы сн]</a>
+          <a class="page-menu-item" href="#contexts" data-section-color="gold">[контексты сн]</a>
+          <a class="page-menu-item" href="#methodology" data-section-color="blue">[методология исследования]</a>
+          <a class="page-menu-item" href="./index.html">[на главную]</a>
+        </div>
+      </nav>
+
+      <section class="intro-section" id="definition" aria-labelledby="intro-title">
+        <div class="intro-frame">
+          <h1 class="intro-title" id="intro-title">СЕКСУАЛИЗИРОВАННОЕ<br />НАСИЛИЕ</h1>
+
+          <div class="intro-definition" aria-label="Определение">
+            <span class="intro-dash" aria-hidden="true"></span>
+            <h2 class="intro-definition-text">
+              <span>ЭТО ЛЮБОЕ СЕКСУАЛИЗИРОВАННОЕ ДЕЙСТВИЕ</span>
+              <span>
+                ИЛИ ПОПЫТКА ТАКОГО ДЕЙСТВИЯ,
+                <em>СОВЕРШАЕМЫЕ</em>
+              </span>
+            </h2>
+          </div>
+
+          <div class="intro-grid">
+            <article class="intro-card intro-card-consent">
+              <h3>БЕЗ ДОБРОВОЛЬНОГО<br />СОГЛАСИЯ ЧЕЛОВЕКА</h3>
+            </article>
+
+            <article class="intro-card intro-card-will">
+              <h3>ПРОТИВ<br />ВОЛИ ЧЕЛОВЕКА</h3>
+            </article>
+
+            <p class="intro-using">ЛИБО<br />С ИСПОЛЬЗОВАНИЕМ:</p>
+
+            <article class="intro-card intro-card-force">
+              <h3>ПРИНУЖДЕНИЯ</h3>
+            </article>
+
+            <article class="intro-card intro-card-threats">
+              <h3>УГРОЗ</h3>
+            </article>
+
+            <article class="intro-card intro-card-manipulation">
+              <h3>МАНИПУЛЯЦИЙ</h3>
+            </article>
+
+            <article class="intro-card intro-card-deception">
+              <h3>ОБМАНА</h3>
+            </article>
+
+            <article class="intro-card intro-card-helpless">
+              <h3>БЕСПОМОЩНОГО<br />СОСТОЯНИЯ.</h3>
+            </article>
+          </div>
+
+          <p class="intro-bottom">
+            <span>ЧАСТО НАСИЛИЕ ВОЗНИКАЕТ В КОНТЕКСТЕ РАЗНИЦЫ В ОБЪЁМЕ</span>
+            <span>ВЛАСТИ ИЛИ СИЛЫ.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="forms-intro-section" id="forms" aria-labelledby="forms-intro-title">
+        <div class="forms-intro-frame">
+          <h2 class="forms-title" id="forms-intro-title">НАСИЛИЕ - МНОГОЛИКО</h2>
+          <p class="forms-subtitle">
+            <span>ЕГО РЕДКО СОВЕРШАЮТ НЕЗНАКОМЦЫ В ПАРКЕ.</span>
+            <span>
+              ЧАСТО ОНО ПРИНИМАЕТ ТАКИЕ ФОРМЫ:<button
+                class="collapse-toggle collapse-toggle-group"
+                type="button"
+                aria-expanded="true"
+                aria-controls="forms-section-panel rape-section-panel during-section-panel harassment-section-panel grooming-section-panel cyberflashing-section-panel contraception-section-panel reproductive-section-panel fgm-section-panel also-section-panel"
+                aria-label="Свернуть раздел «Насилие многолико»"
+                data-collapse-group="forms"
+                data-collapse-label="Свернуть раздел «Насилие многолико»"
+                data-expand-label="Развернуть раздел «Насилие многолико»"
+              ></button>
+            </span>
+          </p>
+        </div>
+      </section>
+
+      <section class="forms-section" id="forms-section-panel" data-collapse-member="forms" aria-labelledby="forms-title">
+        <div class="forms-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="forms-section-content"
+              aria-label="Свернуть содержимое секции «Принудительные действия сексуализированного характера без проникновения»"
+              data-collapse-label="Свернуть содержимое секции «Принудительные действия сексуализированного характера без проникновения»"
+              data-expand-label="Развернуть содержимое секции «Принудительные действия сексуализированного характера без проникновения»"
+            ></button>
+            <h2 class="forms-category-title" id="forms-title">
+              <span>ПРИНУДИТЕЛЬНЫЕ ДЕЙСТВИЯ</span>
+              <span>СЕКСУАЛИЗИРОВАННОГО ХАРАКТЕРА</span>
+              <span>БЕЗ ПРОНИКНОВЕНИЯ</span>
+            </h2>
+          </div>
+
+          <div class="collapsible-section-content" id="forms-section-content">
+            <p class="forms-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+            <div class="forms-grid" aria-label="Формы принудительных действий без проникновения">
+              <div class="form-card form-card-with-tooltip">
+                <span>ПРИНУЖДЕНИЕ<br />СМОТРЕТЬ</span>
+                <span class="info-tooltip">
+                  <button class="info-tooltip-trigger" type="button" aria-describedby="forms-card-1-tooltip">
+                    i
+                  </button>
+                  <span class="info-tooltip-content" id="forms-card-1-tooltip" role="tooltip">
+                    имеется в виду принуждение без добровольного согласия смотреть сексуализированные действия, обнажённое тело или гениталии, а также интимные изображения, видео и другие материалы сексуализированного характера
+                  </span>
+                </span>
+              </div>
+              <div class="form-card">ПРИНУЖДЕНИЕ<br />К ОРАЛЬНОМУ СЕКСУ</div>
+              <div class="form-card">ПРИНУЖДЕНИЕ<br />К ЛАСКАМ</div>
+              <div class="form-card">ПРИНУЖДЕНИЕ<br />К ПОЦЕЛУЮ</div>
+              <div class="form-card">ПРИНУЖДЕНИЕ<br />К РАЗДЕВАНИЮ<br />ИЛИ ОБНАЖЕНИЮ</div>
+              <div class="form-card form-card-wide">
+                ПРИНУЖДЕНИЕ К УЧАСТИЮ<br />
+                В ИНЫХ СЕКСУАЛИЗИРОВАННЫХ ДЕЙСТВИЯХ<br />
+                БЕЗ ПРОНИКНОВЕНИЯ
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rape-section" id="rape-section-panel" data-collapse-member="forms" aria-labelledby="rape-title">
+        <div class="rape-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="rape-section-content"
+              aria-label="Свернуть содержимое секции «Изнасилование»"
+              data-collapse-label="Свернуть содержимое секции «Изнасилование»"
+              data-expand-label="Развернуть содержимое секции «Изнасилование»"
+            ></button>
+            <h2 class="rape-title" id="rape-title">
+              <span class="rape-title-line">
+                ИЗНАСИЛОВАНИЕ
+                <span class="info-tooltip rape-title-tooltip">
+                  <button class="info-tooltip-trigger" type="button" aria-describedby="rape-title-tooltip">
+                    i
+                  </button>
+                  <span class="info-tooltip-content" id="rape-title-tooltip" role="tooltip">
+                    изнасилование — это любое вагинальное, анальное или оральное проникновение сексуализированного характера без добровольного согласия человека, совершённое половым органом, другой частью тела или предметом. Применение физической силы не обязательно: изнасилованием также является проникновение без силы, если добровольного согласия не было
+                  </span>
+                </span>
+              </span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="rape-section-content">
+            <p class="rape-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="rape-grid" aria-label="Формы изнасилования">
+            <div class="rape-card rape-card-1">
+              <span class="rape-card-text">ИГНОРИРОВАНИЕ<br />ВЕРБАЛЬНОГО ОТКАЗА</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="rape-card-1-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="rape-card-1-tooltip" role="tooltip">
+                  вербальный отказ — это любые слова, выражающие несогласие, нежелание, сомнение или просьбу остановиться: «нет», «не хочу», «не уверена / не уверен», «давай не сейчас», «остановись» и подобные фразы. Неуверенное «может быть» также не является согласием
+                </span>
+              </span>
+            </div>
+            <div class="rape-card rape-card-2">
+              <span class="rape-card-text">ИГНОРИРОВАНИЕ<br />НЕВЕРБАЛЬНОГО ОТКАЗА</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="rape-card-2-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="rape-card-2-tooltip" role="tooltip">
+                  невербальный отказ может выражаться отталкиванием, замиранием, напряжением тела, попыткой отвернуться, отодвинуться или уйти, плачем, страхом и другими признаками нежелания или дискомфорта. Молчание и отсутствие сопротивления не означают согласия
+                </span>
+              </span>
+            </div>
+            <div class="rape-card rape-card-3">
+              <span class="rape-card-text">
+                НЕ ПОЛУЧЕНО<br />
+                ВЫРАЖЕННОЕ<br />
+                АКТИВНОЕ СОГЛАСИЕ<br />
+                (МОЛЧАНИЕ ≠ СОГЛАСИЕ)
+              </span>
+            </div>
+            <div class="rape-card rape-card-4">
+              <span class="rape-card-text">В ОТНОШЕНИИ ДЕТЕЙ</span>
+            </div>
+            <div class="rape-card rape-card-5">
+              <span class="rape-card-text">ЗЛОУПОТРЕБЛЕНИЕ<br />ВЛАСТЬЮ</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="rape-card-5-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="rape-card-5-tooltip" role="tooltip">
+                  злоупотребление властью или авторитетом — это использование своего положения или влияния для получения сексуализированных действий. Это может быть учитель, тренер, начальник, врач, наставник, религиозный лидер, представитель власти или любая другая авторитетная для человека фигура
+                </span>
+              </span>
+            </div>
+            <div class="rape-card rape-card-6">
+              <span class="rape-card-text">ИСПОЛЬЗОВАНИЕ<br />УЯЗВИМОГО ПОЛОЖЕНИЯ</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="rape-card-6-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="rape-card-6-tooltip" role="tooltip">
+                  использование уязвимого положения — это использование обстоятельств, ограничивающих возможность свободно отказаться: бедности, миграционного статуса, зависимости от денег, жилья, документов или помощи, возраста, болезни, физических или ментальных особенностей, социальной или языковой изоляции и так далее
+                </span>
+              </span>
+            </div>
+            <div class="rape-card rape-card-12">
+              <span class="rape-card-text">ЗЛОУПОТРЕБЛЕНИЕ<br />ДОВЕРИЕМ</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="rape-card-12-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="rape-card-12-tooltip" role="tooltip">
+                  к кругу доверия могут относиться родственники, друзья семьи, опекуны, наставники и другие близкие или знакомые люди. Близость и доверие могут затруднять распознавание происходящего и обращение за помощью, особенно когда границы нарушаются постепенно или используется груминг
+                </span>
+              </span>
+            </div>
+            <div class="rape-card rape-card-7">
+              <span class="rape-card-text">
+                ПРОДОЛЖЕНИЕ<br />
+                ДЕЙСТВИЙ ПОСЛЕ<br />
+                ОТКАЗА
+              </span>
+            </div>
+            <div class="rape-card rape-card-8">
+              <span class="rape-card-text">
+                ДАВЛЕНИЕ<br />
+                ДО МОМЕНТА, КОГДА<br />
+                ЧЕЛОВЕК ПЕРЕСТАЁТ<br />
+                СОПРОТИВЛЯТЬСЯ
+              </span>
+            </div>
+            <div class="rape-card rape-card-9">
+              <span class="rape-card-text">
+                В ОТНОШЕНИИ<br />
+                ЧЕЛОВЕКА СПЯЩЕГО ИЛИ<br />
+                В БЕССОЗНАТЕЛЬНОМ<br />
+                СОСТОЯНИИ
+              </span>
+            </div>
+            <div class="rape-card rape-card-10">
+              <span class="rape-card-text">
+                ПРОНИКНОВЕНИЕ<br />
+                ПОЛОВЫМ ОРГАНОМ,<br />
+                ПАЛЬЦАМИ ИЛИ<br />
+                ПРЕДМЕТАМИ
+              </span>
+            </div>
+            <div class="rape-card rape-card-11">
+              <span class="rape-card-text">
+                В ОТНОШЕНИИ<br />
+                ЧЕЛОВЕКА<br />
+                В СОСТОЯНИИ<br />
+                ОПЬЯНЕНИЯ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="rape-card-11-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="rape-card-11-tooltip" role="tooltip">
+                  человек в состоянии алкогольного, наркотического или иного опьянения не может дать свободное и осознанное согласие на сексуализированные действия. Молчание, пассивность, отсутствие сопротивления или неспособность сказать «нет» не являются согласием
+                </span>
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="during-section" id="during-section-panel" data-collapse-member="forms" aria-labelledby="during-title">
+        <div class="during-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="during-section-content"
+              aria-label="Свернуть содержимое секции «Действия во время полового акта без согласия»"
+              data-collapse-label="Свернуть содержимое секции «Действия во время полового акта без согласия»"
+              data-expand-label="Развернуть содержимое секции «Действия во время полового акта без согласия»"
+            ></button>
+            <h2 class="during-title" id="during-title">
+              <span>ДЕЙСТВИЯ ВО ВРЕМЯ ПОЛОВОГО АКТА,</span>
+              <span>НА КОТОРЫЕ НЕ БЫЛО ПОЛУЧЕНО СОГЛАСИЕ</span>
+              <span>ИЛИ БЫЛ ПОЛУЧЕН ОТКАЗ</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="during-section-content">
+            <p class="during-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="during-grid" aria-label="Действия во время полового акта без согласия">
+            <div class="during-card during-card-1">
+              <span class="during-card-text">УДУШЕНИЕ</span>
+            </div>
+            <div class="during-card during-card-2">
+              <span class="during-card-text">ШЛЕПКИ</span>
+            </div>
+            <div class="during-card during-card-3">
+              <span class="during-card-text">
+                ЭЯКУЛЯЦИЯ<br />
+                НА ТЕЛО ИЛИ В РОТ
+              </span>
+            </div>
+            <div class="during-card during-card-4">
+              <span class="during-card-text">
+                СВЯЗЫВАНИЕ,<br />
+                УДЕРЖАНИЕ ИЛИ<br />
+                ОГРАНИЧЕНИЕ ДВИЖЕНИЙ
+              </span>
+            </div>
+            <div class="during-card during-card-5">
+              <span class="during-card-text">
+                ИСПОЛЬЗОВАНИЕ КЛЯПА<br />
+                ИЛИ ИНОЕ ЛИШЕНИЕ<br />
+                ВОЗМОЖНОСТИ ГОВОРИТЬ<br />
+                ИЛИ ОСТАНОВИТЬ ДЕЙСТВИЕ
+              </span>
+            </div>
+            <div class="during-card during-card-6">
+              <span class="during-card-text">
+                ИГНОРИРОВАНИЕ<br />
+                ПРОСЬБ ОСТАНОВИТЬСЯ<br />
+                ИЛИ ИЗМЕНИТЬ ДЕЙСТВИЯ
+              </span>
+            </div>
+            <div class="during-card during-card-7">
+              <span class="during-card-text">
+                ЛЮБЫЕ ИНЫЕ ДЕЙСТВИЯ,<br />
+                НА КОТОРЫЕ НЕ БЫЛО<br />
+                ПОЛУЧЕНО СОГЛАСИЕ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="harassment-section" id="harassment-section-panel" data-collapse-member="forms" aria-labelledby="harassment-title">
+        <div class="harassment-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="harassment-section-content"
+              aria-label="Свернуть содержимое секции «Сексуализированные домогательства»"
+              data-collapse-label="Свернуть содержимое секции «Сексуализированные домогательства»"
+              data-expand-label="Развернуть содержимое секции «Сексуализированные домогательства»"
+            ></button>
+            <h2 class="harassment-title" id="harassment-title">СЕКСУАЛИЗИРОВАННЫЕ ДОМОГАТЕЛЬСТВА</h2>
+          </div>
+          <div class="collapsible-section-content" id="harassment-section-content">
+            <p class="harassment-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="harassment-grid" aria-label="Формы сексуализированных домогательств">
+            <div class="harassment-card harassment-card-1">
+              <span class="harassment-card-text">
+                ПОШЛЫЕ ШУТКИ,<br />
+                КОММЕНТАРИИ<br />
+                ИЛИ ВЫСКАЗЫВАНИЯ
+              </span>
+            </div>
+            <div class="harassment-card harassment-card-2">
+              <span class="harassment-card-text">
+                НЕЖЕЛАТЕЛЬНЫЕ ФИЗИЧЕСКИЕ КОНТАКТЫ<br />
+                СЕКСУАЛИЗИРОВАННОГО ХАРАКТЕРА:<br />
+                ПОЦЕЛУИ, ОБЪЯТИЯ, ПРИКОСНОВЕНИЯ
+              </span>
+            </div>
+            <div class="harassment-card harassment-card-3">
+              <span class="harassment-card-text">
+                СЕКСУАЛИЗИРОВАННЫЕ<br />
+                ЖЕСТЫ
+              </span>
+            </div>
+            <div class="harassment-card harassment-card-4">
+              <span class="harassment-card-text">
+                НЕЖЕЛАТЕЛЬНОЕ<br />
+                СЕКСУАЛИЗИРОВАННОЕ<br />
+                ВНИМАНИЕ
+              </span>
+            </div>
+            <div class="harassment-card harassment-card-5">
+              <span class="harassment-card-text">
+                СЕКСУАЛИЗИРОВАННЫЕ ПЕРЕПИСКИ БЕЗ<br />
+                ВЫРАЖЕННОГО, АКТИВНОГО, ПОВТОРЯЕМОГО СОГЛАСИЯ,<br />
+                ОСОБЕННО ПРИ ЗЛОУПОТРЕБЛЕНИИ ВЛАСТЬЮ<br />
+                ИЛИ АВТОРИТЕТОМ
+              </span>
+            </div>
+            <div class="harassment-card harassment-card-6">
+              <span class="harassment-card-text">
+                НЕЖЕЛАТЕЛЬНОЕ СЕКСУАЛИЗИРОВАННОЕ<br />
+                РАССМАТРИВАНИЕ ТЕЛА<br />
+                ИЛИ ИНТИМНЫХ ЧАСТЕЙ ТЕЛА
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grooming-section" id="grooming-section-panel" data-collapse-member="forms" aria-labelledby="grooming-title">
+        <div class="grooming-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="grooming-section-content"
+              aria-label="Свернуть содержимое секции «Груминг как подготовка к сексуализированному насилию»"
+              data-collapse-label="Свернуть содержимое секции «Груминг как подготовка к сексуализированному насилию»"
+              data-expand-label="Развернуть содержимое секции «Груминг как подготовка к сексуализированному насилию»"
+            ></button>
+            <h2 class="grooming-title" id="grooming-title">
+              <span>ГРУМИНГ КАК ПОДГОТОВКА</span>
+              <span>К СЕКСУАЛИЗИРОВАННОМУ НАСИЛИЮ</span>
+              <span>(В ТОМ ЧИСЛЕ В ОТНОШЕНИИ ДЕТЕЙ)</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="grooming-section-content">
+            <p class="grooming-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="grooming-grid" aria-label="Формы груминга как подготовки к сексуализированному насилию">
+            <div class="grooming-card grooming-card-1">
+              <span class="grooming-card-text">
+                УСТАНОВЛЕНИЕ<br />
+                ДОВЕРИЯ С ЦЕЛЬЮ<br />
+                СЕКСУАЛИЗИРОВАННОГО<br />
+                ИСПОЛЬЗОВАНИЯ
+              </span>
+            </div>
+            <div class="grooming-card grooming-card-2">
+              <span class="grooming-card-text">
+                НОРМАЛИЗАЦИЯ<br />
+                СЕКСУАЛИЗИРОВАННЫХ<br />
+                ТЕМ КАК ЧАСТЬ<br />
+                ГРУМИНГА
+              </span>
+            </div>
+            <div class="grooming-card grooming-card-3">
+              <span class="grooming-card-text">
+                МАНИПУЛЯЦИИ И ПОСТЕПЕННОЕ ВОВЛЕЧЕНИЕ<br />
+                РЕБЁНКА ИЛИ ПОДРОСТКА<br />
+                В СЕКСУАЛИЗИРОВАННОЕ ВЗАИМОДЕЙСТВИЕ<br />
+                СО ВЗРОСЛЫМ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cyberflashing-section" id="cyberflashing-section-panel" data-collapse-member="forms" aria-labelledby="cyberflashing-title">
+        <div class="cyberflashing-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="cyberflashing-section-content"
+              aria-label="Свернуть содержимое секции «Киберфлешинг»"
+              data-collapse-label="Свернуть содержимое секции «Киберфлешинг»"
+              data-expand-label="Развернуть содержимое секции «Киберфлешинг»"
+            ></button>
+            <h2 class="cyberflashing-title" id="cyberflashing-title">
+              <span>КИБЕРФЛЕШИНГ</span>
+              <span>(ВЫНУЖДЕНИЕ УВИДЕТЬ ФОТО ИЛИ ВИДЕО ГЕНИТАЛИЙ)</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="cyberflashing-section-content">
+            <p class="cyberflashing-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="cyberflashing-grid" aria-label="Формы киберфлешинга">
+            <div class="cyberflashing-card cyberflashing-card-1">
+              <span class="cyberflashing-card-text">
+                ОТПРАВКА ИНТИМНЫХ<br />
+                ФОТО ИЛИ ВИДЕО<br />
+                В ЛИЧНОЙ ПЕРЕПИСКЕ<br />
+                БЕЗ СОГЛАСИЯ ПОЛУЧАТЕЛЯ
+              </span>
+            </div>
+            <div class="cyberflashing-card cyberflashing-card-2">
+              <span class="cyberflashing-card-text">
+                ОТПРАВКА ИНТИМНЫХ ФОТО ИЛИ ВИДЕО<br />
+                БЕЗ ЗАПРОСА, В ТОМ ЧИСЛЕ ЧЕРЕЗ<br />
+                AIRDROP, BLUETOOTH ИЛИ ПОХОЖИЕ СПОСОБЫ
+              </span>
+            </div>
+            <div class="cyberflashing-card cyberflashing-card-3">
+              <span class="cyberflashing-card-text">
+                ДЕМОНСТРАЦИЯ ИНТИМНЫХ МАТЕРИАЛОВ<br />
+                БЕЗ СОГЛАСИЯ, В Т.Ч.<br />
+                В ПУБЛИЧНЫХ МЕСТАХ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="cyberflashing-card-3-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="cyberflashing-card-3-tooltip" role="tooltip">
+                  в качестве редакторской формулировки мы отнесли это к категории киберфлешинг, хотя строго говоря, ссылаясь на международные документы, верно будет отнести это к форме &quot;image-based sexual abuse&quot;, то есть &quot;насилие на основе изображений&quot;
+                </span>
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contraception-section" id="contraception-section-panel" data-collapse-member="forms" aria-labelledby="contraception-title">
+        <div class="contraception-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="contraception-section-content"
+              aria-label="Свернуть содержимое секции «Обман о контрацепции и стелсинг»"
+              data-collapse-label="Свернуть содержимое секции «Обман о контрацепции и стелсинг»"
+              data-expand-label="Развернуть содержимое секции «Обман о контрацепции и стелсинг»"
+            ></button>
+            <h2 class="contraception-title" id="contraception-title">
+              ОБМАН О КОНТРАЦЕПЦИИ И СТЕЛСИНГ
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="contraception-section-content">
+            <p class="contraception-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="contraception-grid" aria-label="Формы обмана о контрацепции и стелсинга">
+            <div class="contraception-card contraception-card-1">
+              <span class="contraception-card-text">
+                ПОВРЕЖДЕНИЕ<br />
+                ПРЕЗЕРВАТИВА
+              </span>
+            </div>
+            <div class="contraception-card contraception-card-2">
+              <span class="contraception-card-text">
+                СНЯТИЕ ПРЕЗЕРВАТИВА<br />
+                ВО ВРЕМЯ ПОЛОВОГО<br />
+                АКТА БЕЗ УВЕДОМЛЕНИЯ<br />
+                ПАРТНЁРА
+              </span>
+            </div>
+            <div class="contraception-card contraception-card-3">
+              <span class="contraception-card-text">
+                ОБМАН<br />
+                О КОНТРАЦЕПЦИИ
+              </span>
+            </div>
+            <div class="contraception-card contraception-card-4">
+              <span class="contraception-card-text">
+                ОБМАН О РЕПРОДУКТИВНОМ<br />
+                СТАТУСЕ, ВЛИЯЮЩИЙ<br />
+                НА СОГЛАСИЕ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reproductive-section" id="reproductive-section-panel" data-collapse-member="forms" aria-labelledby="reproductive-title">
+        <div class="reproductive-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="reproductive-section-content"
+              aria-label="Свернуть содержимое секции «Репродуктивное насилие и репродуктивный контроль»"
+              data-collapse-label="Свернуть содержимое секции «Репродуктивное насилие и репродуктивный контроль»"
+              data-expand-label="Развернуть содержимое секции «Репродуктивное насилие и репродуктивный контроль»"
+            ></button>
+            <h2 class="reproductive-title" id="reproductive-title">
+              <span>РЕПРОДУКТИВНОЕ НАСИЛИЕ</span>
+              <span>И РЕПРОДУКТИВНЫЙ КОНТРОЛЬ</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="reproductive-section-content">
+            <p class="reproductive-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="reproductive-grid" aria-label="Формы репродуктивного насилия и репродуктивного контроля">
+            <div class="reproductive-card reproductive-card-1">
+              <span class="reproductive-card-text">
+                ПРИНУДИТЕЛЬНАЯ<br />
+                СТЕРИЛИЗАЦИЯ
+              </span>
+            </div>
+            <div class="reproductive-card reproductive-card-2">
+              <span class="reproductive-card-text">
+                ПРИНУДИТЕЛЬНЫЙ<br />
+                АБОРТ
+              </span>
+            </div>
+            <div class="reproductive-card reproductive-card-3">
+              <span class="reproductive-card-text">
+                ПРИНУЖДЕНИЕ<br />
+                К БЕРЕМЕННОСТИ<br />
+                ИЛИ ЕЁ ПРОДОЛЖЕНИЮ
+              </span>
+            </div>
+            <div class="reproductive-card reproductive-card-4">
+              <span class="reproductive-card-text">
+                ЛИШЕНИЕ ДОСТУПА<br />
+                К КОНТРАЦЕПЦИИ<br />
+                ИЛИ ЕЁ САБОТАЖ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fgm-section" id="fgm-section-panel" data-collapse-member="forms" aria-labelledby="fgm-title">
+        <div class="fgm-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="fgm-section-content"
+              aria-label="Свернуть содержимое секции «Калечащие операции на женских половых органах»"
+              data-collapse-label="Свернуть содержимое секции «Калечащие операции на женских половых органах»"
+              data-expand-label="Развернуть содержимое секции «Калечащие операции на женских половых органах»"
+            ></button>
+            <h2 class="fgm-title" id="fgm-title">
+              <span>КАЛЕЧАЩИЕ ОПЕРАЦИИ</span>
+              <span>НА ЖЕНСКИХ ПОЛОВЫХ ОРГАНАХ (КОЖПО)</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="fgm-section-content">
+            <p class="fgm-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="fgm-grid" aria-label="Формы калечащих операций на женских половых органах">
+            <div class="fgm-card fgm-card-1">
+              <span class="fgm-card-text">
+                ЧАСТИЧНОЕ ИЛИ ПОЛНОЕ<br />
+                УДАЛЕНИЕ КЛИТОРАЛЬНОЙ ГОЛОВКИ<br />
+                И/ИЛИ КРАЙНЕЙ ПЛОТИ КЛИТОРА<br />
+                (КОЖПО ТИПА 1)
+              </span>
+            </div>
+            <div class="fgm-card fgm-card-2">
+              <span class="fgm-card-text">
+                ЧАСТИЧНОЕ ИЛИ ПОЛНОЕ УДАЛЕНИЕ КЛИТОРАЛЬНОЙ ГОЛОВКИ<br />
+                И МАЛЫХ ПОЛОВЫХ ГУБ, С УДАЛЕНИЕМ ИЛИ БЕЗ УДАЛЕНИЯ<br />
+                БОЛЬШИХ ПОЛОВЫХ ГУБ (КОЖПО ТИПА 2)
+              </span>
+            </div>
+            <div class="fgm-card fgm-card-3">
+              <span class="fgm-card-text">
+                СУЖЕНИЕ ВЛАГАЛИЩНОГО<br />
+                ОТВЕРСТИЯ ПУТЁМ СОЗДАНИЯ<br />
+                ЗАКРЫВАЮЩЕГО ПОКРЫТИЯ / ИНФИБУЛЯЦИЯ<br />
+                (КОЖПО ТИПА 3)
+              </span>
+            </div>
+            <div class="fgm-card fgm-card-4">
+              <span class="fgm-card-text">
+                ДРУГИЕ ВРЕДНЫЕ ПРОЦЕДУРЫ НА ЖЕНСКИХ ПОЛОВЫХ ОРГАНАХ<br />
+                БЕЗ МЕДИЦИНСКИХ ПОКАЗАНИЙ: ПРОКАЛЫВАНИЕ,<br />
+                ПИРСИНГ, НАДРЕЗЫ,<br />
+                ВЫСКАБЛИВАНИЕ, ПРИЖИГАНИЕ И ДР. (КОЖПО ТИПА 4)
+              </span>
+            </div>
+            <div class="fgm-card fgm-card-5">
+              <span class="fgm-card-text">
+                КОЖПО, ВЫПОЛНЕННАЯ<br />
+                МЕДИЦИНСКИМ РАБОТНИКОМ ИЛИ ПОД ВИДОМ<br />
+                МЕДИЦИНСКОЙ ПРОЦЕДУРЫ<br />
+                (МЕДИКАЛИЗИРОВАННАЯ КОЖПО)
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="also-section" id="also-section-panel" data-collapse-member="forms" aria-labelledby="also-title">
+        <div class="also-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="also-section-content"
+              aria-label="Свернуть содержимое секции «А также»"
+              data-collapse-label="Свернуть содержимое секции «А также»"
+              data-expand-label="Развернуть содержимое секции «А также»"
+            ></button>
+            <h2 class="also-title" id="also-title">А ТАКЖЕ:</h2>
+          </div>
+          <div class="collapsible-section-content" id="also-section-content">
+            <div class="also-grid" aria-label="Другие формы сексуализированного насилия">
+            <div class="also-card also-card-1">
+              <span class="also-card-text">АПСКЁРТИНГ</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="also-card-1-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="also-card-1-tooltip" role="tooltip">
+                  апскёртинг — это съёмка под одеждой человека без его согласия (например, под юбкой), а также скрытая съёмка или подглядывание за интимными частями тела, ягодицами или нижним бельём с помощью камеры либо отражающих поверхностей
+                </span>
+              </span>
+            </div>
+            <div class="also-card also-card-2">
+              <span class="also-card-text">ВУАЙЕРИЗМ</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="also-card-2-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="also-card-2-tooltip" role="tooltip">
+                  вуайеризм — это скрытое наблюдение за человеком в интимной ситуации без его согласия (раздевание, душ, секс и т.д.) или использование для этого скрытых устройств
+                </span>
+              </span>
+            </div>
+            <div class="also-card also-card-3">
+              <span class="also-card-text">
+                ПРЕСЛЕДОВАНИЕ, СЛЕЖКА<br />
+                ИЛИ НАВЯЗЧИВЫЕ ПОЯВЛЕНИЯ<br />
+                С СЕКСУАЛИЗИРОВАННЫМ ДАВЛЕНИЕМ
+              </span>
+            </div>
+            <div class="also-card also-card-4">
+              <span class="also-card-text">
+                РАСПРОСТРАНЕНИЕ ИНТИМНЫХ<br />
+                ИЗОБРАЖЕНИЙ, ПОЛУЧЕННЫХ<br />
+                НА УСЛОВИЯХ ПРИВАТНОСТИ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="also-card-4-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="also-card-4-tooltip" role="tooltip">
+                  имеется в виду публикация, пересылка или иное распространение интимных фото/видео без согласия изображённого человека
+                </span>
+              </span>
+            </div>
+            <div class="also-card also-card-5">
+              <span class="also-card-text">
+                СОЗДАНИЕ И/ИЛИ РАСПРОСТРАНЕНИЕ<br />
+                ИНТИМНОГО КОНТЕНТА, НА КОТОРОЕ<br />
+                НЕ БЫЛО ПОЛУЧЕНО СОГЛАСИЕ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="also-card-5-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="also-card-5-tooltip" role="tooltip">
+                  создание интимного контента означает как съёмку вживую, так и использование новых технологий
+                </span>
+              </span>
+            </div>
+            <div class="also-card also-card-6">
+              <span class="also-card-text">
+                СЕКСУАЛЬНАЯ ЭКСПЛУАТАЦИЯ<br />
+                И СЕКСУАЛЬНОЕ РАБСТВО
+              </span>
+            </div>
+            <div class="also-card also-card-7">
+              <span class="also-card-text">
+                СЕКСУАЛИЗИРОВАННЫЙ ШАНТАЖ<br />
+                / СЕКСТОРШЕН
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="also-card-7-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="also-card-7-tooltip" role="tooltip">
+                  сексуализированный шантаж / сексторшен — это требование секса, сексуализированных действий или интимных материалов под угрозой разглашения личной информации
+                </span>
+              </span>
+            </div>
+            <div class="also-card also-card-9">
+              <span class="also-card-text">ПРИНУДИТЕЛЬНЫЙ БРАК</span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="also-card-9-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="also-card-9-tooltip" role="tooltip">
+                  принудительный брак — это брак, в который один или оба человека вступают без полного и свободного согласия — в том числе под давлением, угрозами, обманом или иным принуждением
+                </span>
+              </span>
+            </div>
+            <div class="also-card also-card-8">
+              <span class="also-card-text">
+                ЛЮБЫЕ ДЕЙСТВИЯ СЕКСУАЛИЗИРОВАННОГО ХАРАКТЕРА<br />
+                БЕЗ ДОБРОВОЛЬНОГО СОГЛАСИЯ,<br />
+                ДАЖЕ ЕСЛИ ОНИ НЕ ПЕРЕЧИСЛЕНЫ ВЫШЕ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="invisible-section" id="contexts" aria-labelledby="invisible-title">
+        <div class="invisible-frame">
+          <h2 class="forms-title" id="invisible-title">НЕВИДИМОЕ НАСИЛИЕ</h2>
+          <p class="forms-subtitle">
+            <span>ЕСТЬ КОНТЕКСТЫ,</span>
+            <span>В КОТОРЫХ НАСИЛИЕ ПРИВЫЧНО НЕ ЗАМЕЧАТЬ.</span>
+            <span>
+              МЫ СОБРАЛИ ЗДЕСЬ ЧАСТЬ ТАКИХ КОНТЕКСТОВ:<button
+                class="collapse-toggle collapse-toggle-group"
+                type="button"
+                aria-expanded="true"
+                aria-controls="partner-section-panel sex-work-section-panel detention-section-panel bdsm-section-panel disability-section-panel conflict-section-panel public-spaces-section-panel contexts-summary-section-panel"
+                aria-label="Свернуть раздел «Невидимое насилие»"
+                data-collapse-group="invisible"
+                data-collapse-label="Свернуть раздел «Невидимое насилие»"
+                data-expand-label="Развернуть раздел «Невидимое насилие»"
+              ></button>
+            </span>
+          </p>
+        </div>
+      </section>
+
+      <section class="partner-section" id="partner-section-panel" data-collapse-member="invisible" aria-labelledby="partner-title">
+        <div class="partner-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="partner-section-content"
+              aria-label="Свернуть содержимое секции «Партнёрское сексуализированное насилие»"
+              data-collapse-label="Свернуть содержимое секции «Партнёрское сексуализированное насилие»"
+              data-expand-label="Развернуть содержимое секции «Партнёрское сексуализированное насилие»"
+            ></button>
+            <h2 class="partner-title" id="partner-title">
+              <span class="partner-title-line">
+                ПАРТНЁРСКОЕ СЕКСУАЛИЗИРОВАННОЕ НАСИЛИЕ
+                <span class="info-tooltip partner-title-tooltip">
+                  <button class="info-tooltip-trigger" type="button" aria-describedby="partner-title-tooltip">
+                    i
+                  </button>
+                  <span class="info-tooltip-content" id="partner-title-tooltip" role="tooltip">
+                    партнёрское сексуализированное насилие — это любые сексуализированные действия, требования или принуждения со стороны партнёра, супруга или бывшего партнёра без свободного и добровольного согласия второго партнёра, в том числе под давлением, страхом, контролем, зависимостью, манипуляцией или через навязывание идеи, что секс или иные действия сексуализированного характера «обязаны» быть частью отношений
+                  </span>
+                </span>
+              </span>
+              <span>(В ОТНОШЕНИЯХ, БРАКЕ И ПОСЛЕ РАЗРЫВА)</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="partner-section-content">
+            <p class="partner-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="partner-grid" aria-label="Формы партнёрского сексуализированного насилия">
+            <div class="partner-card partner-card-1">
+              <span class="partner-card-text">
+                ДАВЛЕНИЕ ПОСЛЕ ОТКАЗА<br />
+                И НАВЯЗЫВАНИЕ СЕКСА<br />
+                КАК ОБЯЗАННОСТИ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="partner-card-1-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="partner-card-1-tooltip" role="tooltip">
+                  например, склонение к сексу после отказа, обесценивание отказа и утверждения вроде «ты должна/должен» или «это нормально в отношениях». Секс без добровольного согласия не перестаёт быть насилием из-за отношений или брака
+                </span>
+              </span>
+            </div>
+            <div class="partner-card partner-card-2">
+              <span class="partner-card-text">
+                НАВЯЗЫВАНИЕ ЧАСТОТЫ,<br />
+                СЦЕНАРИЕВ ИЛИ ФОРМ<br />
+                СЕКСА
+              </span>
+            </div>
+            <p class="partner-grid-label">ПРИНУЖДЕНИЕ К СЕКСУ:</p>
+            <div class="partner-card partner-card-3">
+              <span class="partner-card-text">
+                ВО ВРЕМЯ БОЛЕЗНИ, УСТАЛОСТИ, СНА<br />
+                ИЛИ УЯЗВИМОГО СОСТОЯНИЯ
+              </span>
+            </div>
+            <div class="partner-card partner-card-4">
+              <span class="partner-card-text">
+                ВО ВРЕМЯ БЕРЕМЕННОСТИ,<br />
+                ПОСЛЕ РОДОВ ИЛИ ВО ВРЕМЯ ВОССТАНОВЛЕНИЯ
+              </span>
+            </div>
+            <p class="partner-grid-label partner-manipulation-label">МАНИПУЛЯЦИИ:</p>
+            <div class="partner-card partner-card-6">
+              <span class="partner-card-text">
+                ЧЕРЕЗ «ПРИРОДУ»,<br />
+                УГРОЗУ ИЗМЕНЫ,<br />
+                ОБИДУ ИЛИ ЧУВСТВО ВИНЫ
+              </span>
+            </div>
+            <div class="partner-card partner-card-7">
+              <span class="partner-card-text">
+                ЧЕРЕЗ СЕКС<br />
+                КАК СПОСОБ<br />
+                «ЗАГЛАДИТЬ ВИНУ»
+              </span>
+            </div>
+            <div class="partner-card partner-card-8">
+              <span class="partner-card-text">
+                ЧЕРЕЗ ФИНАНСОВУЮ,<br />
+                ЖИЛИЩНУЮ<br />
+                ИЛИ ИНУЮ ЗАВИСИМОСТЬ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sex-work-section" id="sex-work-section-panel" data-collapse-member="invisible" aria-labelledby="sex-work-title">
+        <div class="sex-work-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="sex-work-section-content"
+              aria-label="Свернуть содержимое секции «Насилие в сфере секс-услуг»"
+              data-collapse-label="Свернуть содержимое секции «Насилие в сфере секс-услуг»"
+              data-expand-label="Развернуть содержимое секции «Насилие в сфере секс-услуг»"
+            ></button>
+            <h2 class="sex-work-title" id="sex-work-title">
+              <span class="sex-work-title-line">
+                НАСИЛИЕ В СФЕРЕ СЕКС-УСЛУГ
+                <span class="info-tooltip sex-work-title-tooltip">
+                  <button class="info-tooltip-trigger" type="button" aria-describedby="sex-work-title-tooltip">
+                    i
+                  </button>
+                  <span class="info-tooltip-content" id="sex-work-title-tooltip" role="tooltip">
+                    насилие в контексте работы в сфере секс-услуг, когда клиент, посредник, менеджер, владелец или иное лицо нарушает согласованные условия или действует без согласия
+                  </span>
+                </span>
+              </span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="sex-work-section-content">
+            <p class="sex-work-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="sex-work-grid" aria-label="Формы насилия в сфере секс-услуг">
+            <div class="sex-work-card sex-work-card-1">
+              <span class="sex-work-card-text">
+                К ДЕЙСТВИЯМ, КОТОРЫЕ НЕ ВХОДЯТ<br />
+                В СОГЛАСОВАННЫЕ УСЛОВИЯ
+              </span>
+            </div>
+            <div class="sex-work-card sex-work-card-2">
+              <span class="sex-work-card-text">
+                ИГНОРИРОВАНИЕ ОТКАЗА<br />
+                ИЛИ ОТЗЫВА СОГЛАСИЯ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="sex-work-card-2-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="sex-work-card-2-tooltip" role="tooltip">
+                  примеры отзыва согласия: просьбы остановиться, изменить действие или формат, завершить услугу и другие
+                </span>
+              </span>
+            </div>
+            <p class="sex-work-grid-label">ПРИНУЖДЕНИЕ:</p>
+            <div class="sex-work-card sex-work-card-3">
+              <span class="sex-work-card-text">
+                К НЕЗАЩИЩЁННОМУ СЕКСУ,<br />
+                ОТКАЗУ ОТ МЕР БЕЗОПАСНОСТИ<br />
+                ИЛИ СТЕЛСИНГ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="sex-work-card-3-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="sex-work-card-3-tooltip" role="tooltip">
+                  стелсинг — это тайное нарушение договорённости о сексе с презервативом: презерватив снимают или намеренно повреждают без ведома и согласия другого человека
+                </span>
+              </span>
+            </div>
+            <div class="sex-work-card sex-work-card-4">
+              <span class="sex-work-card-text">
+                К СЕКСУАЛИЗИРОВАННЫМ<br />
+                ДЕЙСТВИЯМ ЧЕРЕЗ УГРОЗЫ,<br />
+                ШАНТАЖ ИЛИ ЭКОНОМИЧЕСКОЕ ДАВЛЕНИЕ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="sex-work-card-4-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="sex-work-card-4-tooltip" role="tooltip">
+                  экономическое давление может включать невыплату, удержание денег и штрафы, а также лишение доступа к помощи
+                </span>
+              </span>
+            </div>
+            <div class="sex-work-card sex-work-card-5">
+              <span class="sex-work-card-text">
+                К БОЛЕЕ РИСКОВАННЫМ,<br />
+                БОЛЕЗНЕННЫМ, УНИЗИТЕЛЬНЫМ<br />
+                ИЛИ НЕЖЕЛАТЕЛЬНЫМ<br />
+                ПРАКТИКАМ
+              </span>
+            </div>
+            <div class="sex-work-card sex-work-card-6">
+              <span class="sex-work-card-text">
+                НАСИЛИЕ С ИСПОЛЬЗОВАНИЕМ<br />
+                ПРИВИЛЕГИРОВАННОГО<br />
+                ИЛИ ВЛАСТНОГО ПОЛОЖЕНИЯ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="sex-work-card-6-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="sex-work-card-6-tooltip" role="tooltip">
+                  властное положение может использоваться как напрямую, так и опосредованно — например, через специалистов, формально оказывающих психологическую поддержку, если их работа направлена на подавление отказа, нормализацию нарушения границ или склонение к нежелательным сексуализированным действиям
+                </span>
+              </span>
+            </div>
+            <div class="sex-work-card sex-work-card-7">
+              <span class="sex-work-card-text">
+                К СЪЁМКЕ, ДЕМОНСТРАЦИИ<br />
+                ИЛИ РАСПРОСТРАНЕНИЮ<br />
+                ИНТИМНОГО КОНТЕНТА БЕЗ СОГЛАСИЯ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="detention-section" id="detention-section-panel" data-collapse-member="invisible" aria-labelledby="detention-title">
+        <div class="detention-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="detention-section-content"
+              aria-label="Свернуть содержимое секции «Сексуализированное насилие в местах лишения свободы»"
+              data-collapse-label="Свернуть содержимое секции «Сексуализированное насилие в местах лишения свободы»"
+              data-expand-label="Развернуть содержимое секции «Сексуализированное насилие в местах лишения свободы»"
+            ></button>
+            <h2 class="detention-title" id="detention-title">
+              <span class="detention-title-line">
+                СЕКСУАЛИЗИРОВАННОЕ НАСИЛИЕ
+              </span>
+              <span class="detention-title-line detention-title-line-secondary">
+                В МЕСТАХ ЛИШЕНИЯ СВОБОДЫ
+                <span class="info-tooltip detention-title-tooltip">
+                  <button class="info-tooltip-trigger" type="button" aria-describedby="detention-title-tooltip">
+                    i
+                  </button>
+                  <span class="info-tooltip-content" id="detention-title-tooltip" role="tooltip">
+                    насилие в тюрьмах, СИЗО и других закрытых учреждениях, где человек находится под постоянным контролем и ограничен в возможности отказаться, уйти или безопасно обратиться за защитой своих прав
+                  </span>
+                </span>
+              </span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="detention-section-content">
+            <p class="detention-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="detention-grid" aria-label="Формы сексуализированного насилия в местах лишения свободы">
+            <div class="detention-card detention-card-1">
+              <span class="detention-card-text">
+                ИСПОЛЬЗОВАНИЕ СЛУЖЕБНОЙ ВЛАСТИ<br />
+                ДЛЯ ПРИНУЖДЕНИЯ<br />
+                К СЕКСУАЛИЗИРОВАННЫМ ДЕЙСТВИЯМ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="detention-card-1-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="detention-card-1-tooltip" role="tooltip">
+                  в том числе принуждение в обмен на еду, лекарства, душ, перевод, защиту, послабление режима или другие необходимые условия и привилегии. Такое «согласие» не соответствует одному из его основных критериев — добровольности — и поэтому не может считаться согласием
+                </span>
+              </span>
+            </div>
+            <div class="detention-card detention-card-3">
+              <span class="detention-card-text">
+                ПРИНУЖДЕНИЕ К СЕКСУАЛИЗИРОВАННЫМ<br />
+                ДЕЙСТВИЯМ СО СТОРОНЫ ДРУГИХ ЗАКЛЮЧЁННЫХ<br />
+                ПОСРЕДСТВОМ УГРОЗ ИЛИ ОБЕЩАНИЯ ПРИВИЛЕГИЙ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bdsm-section" id="bdsm-section-panel" data-collapse-member="invisible" aria-labelledby="bdsm-title">
+        <div class="bdsm-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="bdsm-section-content"
+              aria-label="Свернуть содержимое секции «Сексуализированное насилие во время БДСМ-практик»"
+              data-collapse-label="Свернуть содержимое секции «Сексуализированное насилие во время БДСМ-практик»"
+              data-expand-label="Развернуть содержимое секции «Сексуализированное насилие во время БДСМ-практик»"
+            ></button>
+            <h2 class="bdsm-title" id="bdsm-title">
+              <span class="bdsm-title-line">СЕКСУАЛИЗИРОВАННОЕ НАСИЛИЕ</span>
+              <span class="bdsm-title-line">ВО ВРЕМЯ БДСМ-ПРАКТИК</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="bdsm-section-content">
+            <p class="bdsm-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="bdsm-grid" aria-label="Формы сексуализированного насилия во время БДСМ-практик">
+            <div class="bdsm-card bdsm-card-1">
+              <span class="bdsm-card-text">
+                НАРУШЕНИЕ ЗАРАНЕЕ<br />
+                СОГЛАСОВАННЫХ<br />
+                ГРАНИЦ, СЦЕНАРИЕВ<br />
+                ИЛИ ПРАКТИК
+              </span>
+            </div>
+            <div class="bdsm-card bdsm-card-2">
+              <span class="bdsm-card-text">
+                ИГНОРИРОВАНИЕ<br />
+                СТОП-СЛОВА,<br />
+                СТОП-СИГНАЛА ИЛИ<br />
+                ОТЗЫВА СОГЛАСИЯ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="bdsm-card-2-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="bdsm-card-2-tooltip" role="tooltip">
+                  согласие можно отозвать в любой момент. Согласие, полученное через давление, манипуляции или шантаж, не является добровольным, а значит, не является согласием
+                </span>
+              </span>
+            </div>
+            <div class="bdsm-card bdsm-card-3">
+              <span class="bdsm-card-text">
+                ПРОДОЛЖЕНИЕ ДЕЙСТВИЙ,<br />
+                НЕСМОТРЯ НА ТО, ЧТО ДРУГОЙ<br />
+                ЧЕЛОВЕК ИСПЫТЫВАЕТ ПАНИКУ,<br />
+                СТРАХ, ВЫРАЖЕННЫЙ ДИСКОМФОРТ<br />
+                ИЛИ НЕ МОЖЕТ ДЫШАТЬ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="disability-section" id="disability-section-panel" data-collapse-member="invisible" aria-labelledby="disability-title">
+        <div class="disability-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="disability-section-content"
+              aria-label="Свернуть содержимое секции «Сексуализированное насилие в отношении людей с физическими или ментальными особенностями»"
+              data-collapse-label="Свернуть содержимое секции «Сексуализированное насилие в отношении людей с физическими или ментальными особенностями»"
+              data-expand-label="Развернуть содержимое секции «Сексуализированное насилие в отношении людей с физическими или ментальными особенностями»"
+            ></button>
+            <h2 class="disability-title" id="disability-title">
+              <span class="disability-title-line">СЕКСУАЛИЗИРОВАННОЕ НАСИЛИЕ</span>
+              <span class="disability-title-line">В ОТНОШЕНИИ ЛЮДЕЙ С ФИЗИЧЕСКИМИ</span>
+              <span class="disability-title-line">ИЛИ МЕНТАЛЬНЫМИ ОСОБЕННОСТЯМИ</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="disability-section-content">
+            <p class="disability-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="disability-grid" aria-label="Формы сексуализированного насилия в отношении людей с физическими или ментальными особенностями">
+            <div class="disability-card disability-card-1">
+              <span class="disability-card-text">
+                НАСИЛИЕ СО СТОРОНЫ<br />
+                РОДСТВЕННИКОВ, ОПЕКУНОВ,<br />
+                ПЕРСОНАЛА, ПЕДАГОГОВ,<br />
+                МЕДРАБОТНИКОВ И ДРУГИХ<br />
+                ДОВЕРЕННЫХ ЛИЦ
+              </span>
+            </div>
+            <div class="disability-card disability-card-2">
+              <span class="disability-card-text">
+                СЕКСУАЛИЗИРОВАННЫЕ ДЕЙСТВИЯ, КОГДА<br />
+                ЧЕЛОВЕК НЕ МОЖЕТ РАСПОЗНАТЬ ПРОИСХОДЯЩЕЕ,<br />
+                СООБЩИТЬ ОБ ОТКАЗЕ ИЛИ ЗАЩИТИТЬ СЕБЯ
+              </span>
+            </div>
+            <div class="disability-card disability-card-3">
+              <span class="disability-card-text">
+                ПРИНУЖДЕНИЕ К СЕКСУАЛИЗИРОВАННЫМ<br />
+                ИЛИ РЕПРОДУКТИВНЫМ ДЕЙСТВИЯМ ПОД ВИДОМ<br />
+                «ЛЕЧЕНИЯ» ИЛИ «УХОДА», ВКЛЮЧАЯ<br />
+                ПРИНУДИТЕЛЬНУЮ СТЕРИЛИЗАЦИЮ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="disability-card-3-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="disability-card-3-tooltip" role="tooltip">
+                  принудительная стерилизация — это медицинское вмешательство, лишающее человека способности к деторождению и проведённое без его добровольного и информированного согласия
+                </span>
+              </span>
+            </div>
+            <div class="disability-card disability-card-4">
+              <span class="disability-card-text">
+                СЕКСУАЛИЗИРОВАННАЯ<br />
+                ЭКСПЛУАТАЦИЯ<br />
+                И ТОРГОВЛЯ ЛЮДЬМИ<br />
+                НА ФОНЕ СТИГМЫ,<br />
+                БЕДНОСТИ<br />
+                И СОЦИАЛЬНОЙ<br />
+                ИЗОЛЯЦИИ
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="conflict-section" id="conflict-section-panel" data-collapse-member="invisible" aria-labelledby="conflict-title">
+        <div class="conflict-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="conflict-section-content"
+              aria-label="Свернуть содержимое секции «Сексуализированное насилие, связанное с вооружённым конфликтом и оккупацией»"
+              data-collapse-label="Свернуть содержимое секции «Сексуализированное насилие, связанное с вооружённым конфликтом и оккупацией»"
+              data-expand-label="Развернуть содержимое секции «Сексуализированное насилие, связанное с вооружённым конфликтом и оккупацией»"
+            ></button>
+            <h2 class="conflict-title" id="conflict-title">
+              <span class="conflict-title-line">СЕКСУАЛИЗИРОВАННОЕ НАСИЛИЕ,</span>
+              <span class="conflict-title-line">СВЯЗАННОЕ С ВООРУЖЁННЫМ</span>
+              <span class="conflict-title-line">
+                КОНФЛИКТОМ И ОККУПАЦИЕЙ
+                <span class="info-tooltip conflict-title-tooltip">
+                  <button class="info-tooltip-trigger" type="button" aria-describedby="conflict-title-tooltip">
+                    i
+                  </button>
+                  <span class="info-tooltip-content" id="conflict-title-tooltip" role="tooltip">
+                    во время войны и оккупации сексуализированное насилие происходит в условиях заметного неравенства власти, страха и зависимости. Вооружённые люди могут контролировать территорию, передвижение, безопасность, документы, доступ к еде, медицине или возможности выехать — и использовать эту власть против гражданских, пленных и зависимых от них людей
+                  </span>
+                </span>
+              </span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="conflict-section-content">
+            <p class="conflict-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="conflict-grid" aria-label="Формы сексуализированного насилия, связанного с вооружённым конфликтом и оккупацией">
+            <div class="conflict-card conflict-card-1">
+              <span class="conflict-card-text">
+                НАСИЛИЕ, СОВЕРШАЕМОЕ<br />
+                ВОЕННОСЛУЖАЩИМИ ЛЮБОЙ<br />
+                ИЗ СТОРОН КОНФЛИКТА,<br />
+                ОККУПАЦИОННЫМИ СИЛАМИ<br />
+                ИЛИ ВООРУЖЁННЫМИ ГРУППАМИ
+              </span>
+            </div>
+            <div class="conflict-card conflict-card-2">
+              <span class="conflict-card-text">
+                НАСИЛИЕ<br />
+                ПРИ ОБЫСКАХ,<br />
+                ЗАДЕРЖАНИЯХ,<br />
+                ДОПРОСАХ, В ПЛЕНУ<br />
+                ИЛИ НА БЛОКПОСТАХ
+              </span>
+            </div>
+            <div class="conflict-card conflict-card-3">
+              <span class="conflict-card-text">
+                СЕКСУАЛЬНОЕ РАБСТВО<br />
+                И СЕКСУАЛЬНАЯ<br />
+                ЭКСПЛУАТАЦИЯ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="conflict-card-3-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="conflict-card-3-tooltip" role="tooltip">
+                  включает сексуальное рабство, принудительную проституцию, принудительный брак и другие формы сексуализированного использования человека через удержание, передачу, зависимость или принуждение
+                </span>
+              </span>
+            </div>
+            <div class="conflict-card conflict-card-4">
+              <span class="conflict-card-text">
+                РЕПРОДУКТИВНОЕ НАСИЛИЕ:<br />
+                ПРИНУЖДЕНИЕ К БЕРЕМЕННОСТИ,<br />
+                АБОРТУ ИЛИ СТЕРИЛИЗАЦИИ
+              </span>
+            </div>
+            <div class="conflict-card conflict-card-5">
+              <span class="conflict-card-text">
+                НАСИЛИЕ КАК СПОСОБ КОНТРОЛЯ,<br />
+                НАКАЗАНИЯ, УНИЖЕНИЯ,<br />
+                ПРЕСЛЕДОВАНИЯ ИЛИ ЗАПУГИВАНИЯ
+              </span>
+            </div>
+            <div class="conflict-card conflict-card-6">
+              <span class="conflict-card-text">
+                В ОТДЕЛЬНЫХ СЛУЧАЯХ<br />
+                — АКТ ГЕНОЦИДА
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="conflict-card-6-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="conflict-card-6-tooltip" role="tooltip">
+                  если совершается с намерением уничтожить полностью или частично национальную, этническую, расовую или религиозную группу — в том числе через тяжкий вред или препятствование рождению детей внутри группы
+                </span>
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="public-spaces-section" id="public-spaces-section-panel" data-collapse-member="invisible" aria-labelledby="public-spaces-title">
+        <div class="public-spaces-frame">
+          <div class="collapse-heading collapse-heading-section">
+            <button
+              class="collapse-toggle collapse-toggle-section"
+              type="button"
+              aria-expanded="true"
+              aria-controls="public-spaces-section-content"
+              aria-label="Свернуть содержимое секции «Сексуализированное насилие в транспорте и публичных пространствах»"
+              data-collapse-label="Свернуть содержимое секции «Сексуализированное насилие в транспорте и публичных пространствах»"
+              data-expand-label="Развернуть содержимое секции «Сексуализированное насилие в транспорте и публичных пространствах»"
+            ></button>
+            <h2 class="public-spaces-title" id="public-spaces-title">
+              <span class="public-spaces-title-line">СЕКСУАЛИЗИРОВАННОЕ НАСИЛИЕ</span>
+              <span class="public-spaces-title-line">В ТРАНСПОРТЕ И ПУБЛИЧНЫХ ПРОСТРАНСТВАХ</span>
+            </h2>
+          </div>
+          <div class="collapsible-section-content" id="public-spaces-section-content">
+            <p class="public-spaces-note">ЭТО В ТОМ ЧИСЛЕ:</p>
+
+          <div class="public-spaces-grid" aria-label="Формы сексуализированного насилия в транспорте и публичных пространствах">
+            <div class="public-spaces-card public-spaces-card-1">
+              <span class="public-spaces-card-text">
+                ХВАТАНИЕ, ПРИЖИМАНИЕ,<br />
+                ПРИКОСНОВЕНИЯ ИЛИ ТРЕНИЕ О ТЕЛО,<br />
+                ВЫДАННЫЕ ЗА «СЛУЧАЙНЫЙ»<br />
+                КОНТАКТ
+              </span>
+            </div>
+            <div class="public-spaces-card public-spaces-card-2">
+              <span class="public-spaces-card-text">
+                ПРИКОСНОВЕНИЯ К ГРУДИ, ЯГОДИЦАМ<br />
+                ИЛИ ГЕНИТАЛИЯМ РЕБЁНКА,<br />
+                ПОПЫТКИ ЗАЛЕЗТЬ ПОД ОДЕЖДУ<br />
+                ИЛИ ПРИЖАТЬСЯ К НЕМУ ПОЛОВЫМ ОРГАНОМ
+              </span>
+            </div>
+            <div class="public-spaces-card public-spaces-card-3">
+              <span class="public-spaces-card-text">
+                ДОМОГАТЕЛЬСТВА
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="public-spaces-card-3-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="public-spaces-card-3-tooltip" role="tooltip">
+                  домогательства — это не только прямые предложения сексуализированного характера. Это также пошлые шутки, сексуализированные комментарии, свист, жесты и навязчивое внимание сексуализированного характера
+                </span>
+              </span>
+            </div>
+            <div class="public-spaces-card public-spaces-card-4">
+              <span class="public-spaces-card-text">
+                ПРЕСЛЕДОВАНИЕ<br />
+                НА УЛИЦЕ,<br />
+                В ТРАНСПОРТЕ<br />
+                ИЛИ ПОСЛЕ ВЫХОДА<br />
+                ИЗ НЕГО
+              </span>
+            </div>
+            <div class="public-spaces-card public-spaces-card-5">
+              <span class="public-spaces-card-text">
+                ОБНАЖЕНИЕ<br />
+                ГЕНИТАЛИЙ<br />
+                ПЕРЕД ЧЕЛОВЕКОМ<br />
+                БЕЗ ЕГО СОГЛАСИЯ
+              </span>
+            </div>
+            <div class="public-spaces-card public-spaces-card-6">
+              <span class="public-spaces-card-text">
+                АПСКЁРТИНГ
+              </span>
+              <span class="info-tooltip">
+                <button class="info-tooltip-trigger" type="button" aria-describedby="public-spaces-card-6-tooltip">
+                  i
+                </button>
+                <span class="info-tooltip-content" id="public-spaces-card-6-tooltip" role="tooltip">
+                  апскёртинг — это съёмка под одеждой человека без его согласия (например, под юбкой), а также скрытая съёмка или подглядывание за интимными частями тела, ягодицами или нижним бельём с помощью камеры либо отражающих поверхностей
+                </span>
+              </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contexts-summary-section" id="contexts-summary-section-panel" data-collapse-member="invisible" aria-labelledby="contexts-summary-title">
+        <div class="contexts-summary-frame">
+          <div class="contexts-summary-card">
+            <h2 class="contexts-summary-title" id="contexts-summary-title">
+              Контекстов сексуализированного насилия гораздо больше.
+            </h2>
+            <p class="contexts-summary-text">
+              Оно может происходить в семье, среди знакомых, в образовательной и профессиональной среде<br />
+              и во множестве других обстоятельств, <span class="contexts-summary-emphasis">мы признаём их и видим.</span>
+            </p>
+            <p class="contexts-summary-text">
+              Но в этой части материала <span class="contexts-summary-emphasis">решили направить внимание на контексты, которые общество обычно не замечает.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="methodology-section" id="methodology" aria-labelledby="methodology-title">
+        <div class="methodology-sticky">
+          <div class="methodology-frame">
+            <h2 class="methodology-title" id="methodology-title">
+              <span>МЕТОДОЛОГИЯ</span>
+              <span class="methodology-title-line">
+                ИССЛЕДОВАНИЯ<button
+                  class="collapse-toggle collapse-toggle-group collapse-toggle-methodology"
+                  type="button"
+                  aria-expanded="true"
+                  aria-controls="methodology-section-content"
+                  aria-label="Свернуть раздел «Методология исследования»"
+                  data-collapse-label="Свернуть раздел «Методология исследования»"
+                  data-expand-label="Развернуть раздел «Методология исследования»"
+                ></button>
+              </span>
+            </h2>
+
+            <div class="collapsible-section-content" id="methodology-section-content">
+              <div class="methodology-viewport">
+                <ol class="methodology-timeline" aria-label="Этапы методологии исследования">
+                <li class="methodology-step">
+                  <p class="methodology-step-title">
+                    Определили список<br />
+                    авторитетных источников
+                    <span class="methodology-tooltip-row">
+                      <span class="info-tooltip methodology-source-tooltip">
+                        <button
+                          class="info-tooltip-trigger"
+                          type="button"
+                          aria-describedby="methodology-step-1-tooltip"
+                        >
+                          i
+                        </button>
+                        <span
+                          class="info-tooltip-content methodology-source-tooltip-content"
+                          id="methodology-step-1-tooltip"
+                          role="tooltip"
+                        >
+                          в основу работы вошли признанные международные документы, руководства и материалы, в которых описываются формы, проявления и контексты СН
+                        </span>
+                      </span>
+                      <span class="download-tooltip">
+                        <button
+                          class="download-tooltip-trigger"
+                          type="button"
+                          aria-label="Материалы для скачивания"
+                          aria-describedby="methodology-step-1-download-tooltip"
+                        >
+                          <svg
+                            class="download-tooltip-icon"
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 32 32"
+                          >
+                            <path d="M16 3v17m-7-7 7 7 7-7" />
+                            <path d="M5 23v2.5a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V23" />
+                          </svg>
+                        </button>
+                        <span
+                          class="download-tooltip-content"
+                          id="methodology-step-1-download-tooltip"
+                          role="tooltip"
+                        >
+                          <a
+                            class="download-tooltip-link"
+                            href="./materials/00. Список использованных авторитетных источников — Тьма рассеется.txt"
+                            download
+                          >
+                            скачать список авторитетных источников
+                          </a>
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </li>
+                <li class="methodology-step">
+                  <p class="methodology-step-title">
+                    Извлекли из каждого источника<br />
+                    информацию о формах,<br />
+                    проявлениях и контекстах СН
+                    <span class="methodology-tooltip-row">
+                      <span class="info-tooltip">
+                        <button
+                          class="info-tooltip-trigger"
+                          type="button"
+                          aria-describedby="methodology-step-2-tooltip"
+                        >
+                          i
+                        </button>
+                        <span
+                          class="info-tooltip-content"
+                          id="methodology-step-2-tooltip"
+                          role="tooltip"
+                        >
+                          по каждому источнику была создана отдельная таблица с найденными упоминаниями форм, проявлений, способов совершения, условий и контекстов СН
+                        </span>
+                      </span>
+                      <span class="download-tooltip">
+                        <button
+                          class="download-tooltip-trigger"
+                          type="button"
+                          aria-label="Материалы для скачивания"
+                          aria-describedby="methodology-step-2-download-tooltip"
+                        >
+                          <svg
+                            class="download-tooltip-icon"
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 32 32"
+                          >
+                            <path d="M16 3v17m-7-7 7 7 7-7" />
+                            <path d="M5 23v2.5a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V23" />
+                          </svg>
+                        </button>
+                        <span
+                          class="download-tooltip-content"
+                          id="methodology-step-2-download-tooltip"
+                          role="tooltip"
+                        >
+                          <a
+                            class="download-tooltip-link"
+                            href="./materials/01. Таблицы по авторитетным источникам — Тьма рассеется.zip"
+                            download
+                          >
+                            скачать ZIP-архив с 21-ой таблицей по отдельным источникам
+                          </a>
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </li>
+                <li class="methodology-step">
+                  <p class="methodology-step-title">
+                    Объединили извлечения<br />
+                    в единую доказательную базу
+                    <span class="methodology-tooltip-row">
+                      <span class="info-tooltip">
+                        <button
+                          class="info-tooltip-trigger"
+                          type="button"
+                          aria-describedby="methodology-step-3-tooltip"
+                        >
+                          i
+                        </button>
+                        <span
+                          class="info-tooltip-content"
+                          id="methodology-step-3-tooltip"
+                          role="tooltip"
+                        >
+                          сводная таблица показывает, какие формы, проявления и контексты СН встречались в каждом источнике
+                        </span>
+                      </span>
+                      <span class="download-tooltip">
+                        <button
+                          class="download-tooltip-trigger"
+                          type="button"
+                          aria-label="Материалы для скачивания"
+                          aria-describedby="methodology-step-3-download-tooltip"
+                        >
+                          <svg
+                            class="download-tooltip-icon"
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 32 32"
+                          >
+                            <path d="M16 3v17m-7-7 7 7 7-7" />
+                            <path d="M5 23v2.5a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V23" />
+                          </svg>
+                        </button>
+                        <span
+                          class="download-tooltip-content"
+                          id="methodology-step-3-download-tooltip"
+                          role="tooltip"
+                        >
+                          <a
+                            class="download-tooltip-link"
+                            href="./materials/02. Сводная таблица доказательной базы — Тьма рассеется.xlsx"
+                            download
+                          >
+                            скачать общую сводную таблицу по всем источникам
+                          </a>
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </li>
+                <li class="methodology-step">
+                  <p class="methodology-step-title">
+                    Сопоставили источники<br />
+                    с исходным авторским списком<br />
+                    форм СН
+                    <span class="methodology-tooltip-row">
+                      <span class="info-tooltip">
+                        <button
+                          class="info-tooltip-trigger"
+                          type="button"
+                          aria-describedby="methodology-step-4-tooltip"
+                        >
+                          i
+                        </button>
+                        <span
+                          class="info-tooltip-content"
+                          id="methodology-step-4-tooltip"
+                          role="tooltip"
+                        >
+                          для каждого пункта авторского списка искались подтверждения или их отсутствие в признанных источниках, а также добавлялись формы и проявления, которые были найдены в источниках, но отсутствовали в первоначальном списке
+                        </span>
+                      </span>
+                      <span class="download-tooltip">
+                        <button
+                          class="download-tooltip-trigger"
+                          type="button"
+                          aria-label="Материалы для скачивания"
+                          aria-describedby="methodology-step-4-download-tooltip"
+                        >
+                          <svg
+                            class="download-tooltip-icon"
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 32 32"
+                          >
+                            <path d="M16 3v17m-7-7 7 7 7-7" />
+                            <path d="M5 23v2.5a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V23" />
+                          </svg>
+                        </button>
+                        <span
+                          class="download-tooltip-content"
+                          id="methodology-step-4-download-tooltip"
+                          role="tooltip"
+                        >
+                          <a
+                            class="download-tooltip-link"
+                            href="./materials/03. Рабочее сопоставление формулировок — Тьма рассеется.xlsx"
+                            download
+                          >
+                            скачать рабочую таблицу сопоставления авторского списка со сводной таблицей доказательной базы
+                          </a>
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </li>
+                <li class="methodology-step">
+                  <p class="methodology-step-title">
+                    Проверили спорные случаи<br />
+                    и уточнили формулировки
+                    <span class="methodology-tooltip-row">
+                      <span class="info-tooltip">
+                        <button
+                          class="info-tooltip-trigger"
+                          type="button"
+                          aria-describedby="methodology-step-5-tooltip"
+                        >
+                          i
+                        </button>
+                        <span
+                          class="info-tooltip-content"
+                          id="methodology-step-5-tooltip"
+                          role="tooltip"
+                        >
+                          спорные и неоднозначные позиции проверялись вручную. Мы определяли, является ли пункт самостоятельной формой насилия, проявлением, способом совершения, условием или контекстом; убирали дубли, уточняли формулировки и проверяли их на риск виктимблейминга
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </li>
+                <li class="methodology-step">
+                  <p class="methodology-step-title">
+                    Получили итоговую систему<br />
+                    форм СН и оформили её<br />
+                    на этой странице
+                    <span class="methodology-tooltip-row">
+                      <span class="info-tooltip">
+                        <button
+                          class="info-tooltip-trigger"
+                          type="button"
+                          aria-describedby="methodology-step-6-tooltip"
+                        >
+                          i
+                        </button>
+                        <span
+                          class="info-tooltip-content"
+                          id="methodology-step-6-tooltip"
+                          role="tooltip"
+                        >
+                          из проверенной итоговой таблицы была создана публичная версия и текстовый документ для размещения на сайте
+                        </span>
+                      </span>
+                      <span class="download-tooltip">
+                        <button
+                          class="download-tooltip-trigger"
+                          type="button"
+                          aria-label="Материалы для скачивания"
+                          aria-describedby="methodology-step-6-download-tooltip"
+                        >
+                          <svg
+                            class="download-tooltip-icon"
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 32 32"
+                          >
+                            <path d="M16 3v17m-7-7 7 7 7-7" />
+                            <path d="M5 23v2.5a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V23" />
+                          </svg>
+                        </button>
+                        <span
+                          class="download-tooltip-content download-tooltip-content-multiple"
+                          id="methodology-step-6-download-tooltip"
+                          role="tooltip"
+                        >
+                          <a
+                            class="download-tooltip-link"
+                            href="./materials/04. Таблица форм сексуализированного насилия — Тьма рассеется.xlsx"
+                            download
+                          >
+                            скачать итоговую публичную таблицу
+                          </a>
+                          <a
+                            class="download-tooltip-link"
+                            href="./materials/05. Что является сексуализированным насилием — Тьма рассеется.docx"
+                            download
+                          >
+                            скачать итоговый word-документ с текстовым содержанием форм, подформ и контекстов СН
+                          </a>
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer" aria-label="Подвал сайта">
+        <div class="site-footer-frame">
+          <div class="site-footer-columns">
+            <section class="site-footer-column" aria-label="Связь с проектом">
+              <p class="site-footer-column-title">напишите по любым вопросам:</p>
+              <p class="site-footer-column-note">
+                в том числе если хотите стать волонтёркой проекта
+              </p>
+              <span class="site-footer-icon" aria-hidden="true">
+                <img
+                  class="site-footer-spell"
+                  src="./images/элементы подвала/подвал иконка заклинание.png"
+                  alt=""
+                />
+                <img
+                  class="site-footer-symbol site-footer-symbol-mail"
+                  src="./images/элементы подвала/подвал иконка почта.png"
+                  alt=""
+                />
+              </span>
+            </section>
+
+            <section class="site-footer-column" aria-label="Уведомления проекта">
+              <p class="site-footer-column-title">подпишитесь:</p>
+              <p class="site-footer-column-note">
+                на редкие уведомления<br />
+                о развитии проекта
+              </p>
+              <span class="site-footer-icon" aria-hidden="true">
+                <img
+                  class="site-footer-spell"
+                  src="./images/элементы подвала/подвал иконка заклинание.png"
+                  alt=""
+                />
+                <img
+                  class="site-footer-symbol site-footer-symbol-telegram"
+                  src="./images/элементы подвала/подвал иконка телеграм.png"
+                  alt=""
+                />
+              </span>
+            </section>
+
+            <section class="site-footer-column" aria-label="Видео проекта">
+              <p class="site-footer-column-title">подпишитесь:</p>
+              <p class="site-footer-column-note">на наши видео</p>
+              <span class="site-footer-icon" aria-hidden="true">
+                <img
+                  class="site-footer-spell"
+                  src="./images/элементы подвала/подвал иконка заклинание.png"
+                  alt=""
+                />
+                <img
+                  class="site-footer-symbol site-footer-symbol-youtube"
+                  src="./images/элементы подвала/подвал иконка ютуб.png"
+                  alt=""
+                />
+              </span>
+            </section>
+          </div>
+
+          <p class="site-footer-signature">Тьма рассеется</p>
+        </div>
+      </footer>
+
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
