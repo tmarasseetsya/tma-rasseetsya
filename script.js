@@ -872,3 +872,29 @@
   measureMenuStickPoint();
   updateActiveLink();
 })();
+
+(() => {
+  const dialog = document.getElementById("legal-dialog");
+  const links = document.querySelectorAll("[data-legal-dialog-open]");
+
+  if (!dialog || typeof dialog.showModal !== "function" || links.length === 0) {
+    return;
+  }
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const opensAnotherContext =
+        event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+      if (event.defaultPrevented || opensAnotherContext) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (!dialog.open) {
+        dialog.showModal();
+      }
+    });
+  });
+})();

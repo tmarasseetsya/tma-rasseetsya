@@ -7,8 +7,8 @@
 }
 
 @font-face {
-  font-family: "Site Footer Cormorant";
-  src: url("./fonts/CormorantGaramond-Medium.ttf") format("truetype");
+  font-family: "Site Footer Montserrat";
+  src: url("./fonts/Montserrat-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -117,19 +117,218 @@
   height: 25px;
 }
 
-.site-footer-signature {
+.site-footer-legal {
   position: absolute;
-  top: 230px;
+  top: 227px;
   left: 50%;
-  width: max-content;
+  width: 1100px;
   margin: 0;
-  color: var(--site-footer-cream);
-  font-family: "Site Footer Cormorant", serif;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1;
+  color: #747772;
+  font-family: "Site Footer Montserrat", Montserrat, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
   letter-spacing: 0;
   text-align: center;
   transform: translateX(-50%);
-  white-space: nowrap;
+}
+
+.site-footer-legal-line {
+  display: block;
+}
+
+.site-footer-legal-link {
+  color: inherit;
+  text-decoration-color: #656864;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.site-footer-legal-link:hover {
+  color: #92958f;
+}
+
+.site-footer-legal-link:focus-visible,
+.legal-dialog-close:focus-visible,
+.legal-page-back:focus-visible {
+  outline: 2px solid #aaa996;
+  outline-offset: 4px;
+}
+
+.legal-dialog {
+  width: min(760px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  overflow: hidden;
+  color: #30332f;
+  background: #eee9d6;
+  border: 1px solid #a9a792;
+  border-radius: 3px;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 45%);
+}
+
+.legal-dialog::backdrop {
+  background: rgb(16 18 17 / 76%);
+  backdrop-filter: blur(2px);
+}
+
+.legal-document {
+  position: relative;
+  box-sizing: border-box;
+  font-family: "Site Footer Montserrat", Montserrat, Arial, sans-serif;
+}
+
+.legal-dialog .legal-document {
+  max-height: calc(100dvh - 34px);
+  padding: 44px 52px 48px;
+  overflow-y: auto;
+}
+
+.legal-document h1,
+.legal-document h2,
+.legal-document p {
+  margin-top: 0;
+}
+
+.legal-document h1,
+.legal-document h2 {
+  color: #292c29;
+  font-family: "Site Footer Montserrat", Montserrat, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.legal-document h1 {
+  margin-bottom: 30px;
+  font-size: 38px;
+  line-height: 1.1;
+}
+
+.legal-document h2 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.legal-document h2:not(:first-of-type) {
+  margin-top: 36px;
+}
+
+.legal-document p {
+  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.legal-document p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-copyright {
+  color: #5d605a;
+}
+
+.legal-dialog-close {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  right: 18px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: #5d605a;
+  font:
+    28px/1 Arial,
+    sans-serif;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  place-items: center;
+}
+
+.legal-dialog-close:hover {
+  color: #292c29;
+  background: rgb(41 44 41 / 8%);
+}
+
+.legal-page-body {
+  margin: 0;
+}
+
+.legal-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 56px 24px;
+  color: #30332f;
+  background: #1d211f;
+}
+
+.legal-document--page {
+  box-sizing: border-box;
+  width: min(820px, 100%);
+  margin: 0 auto;
+  padding: 56px 64px 64px;
+  background: #eee9d6;
+  border: 1px solid #a9a792;
+  border-radius: 3px;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 35%);
+}
+
+.legal-page-back {
+  display: inline-block;
+  margin-bottom: 32px;
+  color: #5d605a;
+  font-size: 14px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 1439px) {
+  .site-footer-legal {
+    left: 50vw;
+    width: calc(100vw - 48px);
+  }
+}
+
+@media (max-width: 700px) {
+  .site-footer-legal {
+    top: 217px;
+    width: calc(100vw - 24px);
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+
+  .legal-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+
+  .legal-dialog .legal-document {
+    max-height: calc(100dvh - 22px);
+    padding: 48px 24px 32px;
+  }
+
+  .legal-document h1 {
+    font-size: 32px;
+  }
+
+  .legal-document h2 {
+    font-size: 27px;
+  }
+
+  .legal-document p {
+    font-size: 14px;
+  }
+
+  .legal-page {
+    padding: 0;
+  }
+
+  .legal-document--page {
+    min-height: 100vh;
+    padding: 36px 24px 48px;
+    border: 0;
+    border-radius: 0;
+  }
 }
