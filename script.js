@@ -466,6 +466,86 @@
 })();
 
 (() => {
+  const tooltips = [
+    ...document.querySelectorAll(".info-tooltip, .download-tooltip")
+  ];
+
+  if (tooltips.length === 0) {
+    return;
+  }
+
+  const triggerFor = (tooltip) =>
+    tooltip.querySelector(".info-tooltip-trigger, .download-tooltip-trigger");
+
+  const closeTooltip = (tooltip) => {
+    const trigger = triggerFor(tooltip);
+
+    tooltip.classList.remove("is-open");
+    trigger?.setAttribute("aria-expanded", "false");
+
+    if (document.activeElement === trigger) {
+      trigger.blur();
+    }
+  };
+
+  const closeAllTooltips = (except = null) => {
+    tooltips.forEach((tooltip) => {
+      if (tooltip !== except) {
+        closeTooltip(tooltip);
+      }
+    });
+  };
+
+  tooltips.forEach((tooltip) => {
+    const trigger = triggerFor(tooltip);
+
+    if (!trigger) {
+      return;
+    }
+
+    trigger.setAttribute("aria-expanded", "false");
+
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const wasOpen = tooltip.classList.contains("is-open");
+
+      closeAllTooltips(tooltip);
+
+      if (wasOpen) {
+        closeTooltip(tooltip);
+        trigger.blur();
+        return;
+      }
+
+      tooltip.classList.add("is-open");
+      trigger.setAttribute("aria-expanded", "true");
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".info-tooltip, .download-tooltip")) {
+      closeAllTooltips();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    const openTooltip = document.querySelector(
+      ".info-tooltip.is-open, .download-tooltip.is-open"
+    );
+
+    if (openTooltip) {
+      closeTooltip(openTooltip);
+    }
+  });
+})();
+
+(() => {
   const section = document.getElementById("home-site-map-panel");
   const toggle = document.querySelector(
     '.home-site-map[aria-controls="home-site-map-panel"]'
@@ -803,6 +883,7 @@
 
 (() => {
   const menu = document.querySelector(".page-menu");
+  const menuList = menu?.querySelector(".page-menu-list");
   const sectionLinks = [...document.querySelectorAll(".page-menu-item[href^='#']")]
     .map((link) => {
       const section = document.getElementById(link.hash.slice(1));
@@ -811,13 +892,28 @@
     })
     .filter(Boolean);
 
-  if (!menu || sectionLinks.length === 0) {
+  if (!menu || !menuList || sectionLinks.length === 0) {
     return;
   }
 
   let activeLink = null;
   let updateFrame = 0;
   let menuStickPoint = 0;
+  const compactMenuQuery = window.matchMedia("(max-width: 1100px)");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const revealActiveLink = (link) => {
+    if (!link || !compactMenuQuery.matches) {
+      return;
+    }
+
+    const targetLeft = link.offsetLeft - (menuList.clientWidth - link.offsetWidth) / 2;
+
+    menuList.scrollTo({
+      left: Math.max(0, targetLeft),
+      behavior: reducedMotionQuery.matches ? "auto" : "smooth"
+    });
+  };
 
   const setActiveLink = (nextActiveLink) => {
     if (activeLink === nextActiveLink) {
@@ -829,6 +925,7 @@
     activeLink = nextActiveLink;
     activeLink?.classList.add("is-active");
     activeLink?.setAttribute("aria-current", "location");
+    revealActiveLink(activeLink);
   };
 
   const updateActiveLink = () => {
@@ -870,6 +967,7 @@
   window.addEventListener("hashchange", requestActiveLinkUpdate);
   window.addEventListener("load", measureMenuStickPoint, { once: true });
   window.addEventListener("guide:layout-change", measureMenuStickPoint);
+  compactMenuQuery.addEventListener("change", () => revealActiveLink(activeLink));
 
   measureMenuStickPoint();
   updateActiveLink();

@@ -1801,12 +1801,14 @@ main {
 }
 
 .download-tooltip:hover,
-.download-tooltip:focus-within {
+.download-tooltip:focus-within,
+.download-tooltip.is-open {
   z-index: 50;
 }
 
 .download-tooltip:hover .download-tooltip-content,
-.download-tooltip:focus-within .download-tooltip-content {
+.download-tooltip:focus-within .download-tooltip-content,
+.download-tooltip.is-open .download-tooltip-content {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -2101,18 +2103,21 @@ main {
 }
 
 .info-tooltip:hover,
-.info-tooltip:focus-within {
+.info-tooltip:focus-within,
+.info-tooltip.is-open {
   z-index: 50;
 }
 
 .info-tooltip:hover .info-tooltip-content,
-.info-tooltip:focus-within .info-tooltip-content {
+.info-tooltip:focus-within .info-tooltip-content,
+.info-tooltip.is-open .info-tooltip-content {
   opacity: 1;
   transform: translateY(0);
 }
 
 .methodology-section .info-tooltip:hover .info-tooltip-content,
-.methodology-section .info-tooltip:focus-within .info-tooltip-content {
+.methodology-section .info-tooltip:focus-within .info-tooltip-content,
+.methodology-section .info-tooltip.is-open .info-tooltip-content {
   transform: translate(-50%, 0);
 }
 
@@ -2826,7 +2831,7 @@ main {
   html,
   body {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   .intro-frame,
@@ -2889,26 +2894,30 @@ main {
 
   .page-menu {
     margin: 30px 0 62px;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: none;
-  }
-
-  .page-menu::-webkit-scrollbar {
-    display: none;
+    overflow: visible;
   }
 
   .page-menu-list {
     display: flex;
     justify-content: flex-start;
     gap: 30px;
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
+    min-width: 0;
     padding: 0 var(--page-gutter);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-padding-inline: var(--page-gutter);
+  }
+
+  .page-menu-list::-webkit-scrollbar {
+    display: none;
   }
 
   .page-menu-item {
     display: flex;
+    flex: 0 0 auto;
     min-height: 44px;
     align-items: center;
   }
@@ -3140,9 +3149,18 @@ main {
 
   .methodology-section .info-tooltip:hover .info-tooltip-content,
   .methodology-section .info-tooltip:focus-within .info-tooltip-content,
+  .methodology-section .info-tooltip.is-open .info-tooltip-content,
   .download-tooltip:hover .download-tooltip-content,
-  .download-tooltip:focus-within .download-tooltip-content {
+  .download-tooltip:focus-within .download-tooltip-content,
+  .download-tooltip.is-open .download-tooltip-content {
     transform: translateY(0);
+  }
+
+  #definition,
+  #forms,
+  #contexts,
+  #methodology {
+    scroll-margin-top: 82px;
   }
 }
 
@@ -3445,7 +3463,8 @@ main {
   }
 
   .methodology-section .info-tooltip:hover .info-tooltip-content,
-  .methodology-section .info-tooltip:focus-within .info-tooltip-content {
+  .methodology-section .info-tooltip:focus-within .info-tooltip-content,
+  .methodology-section .info-tooltip.is-open .info-tooltip-content {
     transform: translateY(0);
   }
 
@@ -3475,5 +3494,27 @@ main {
   .methodology-step-title {
     font-size: 17px;
     line-height: 1.2;
+  }
+}
+
+@media (hover: none) {
+  .info-tooltip:not(.is-open) .info-tooltip-content {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+  }
+
+  .download-tooltip:not(.is-open) .download-tooltip-content {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -4px);
+  }
+}
+
+@media (hover: none) and (max-width: 1100px) {
+  .methodology-section .info-tooltip:not(.is-open) .info-tooltip-content,
+  .methodology-section .download-tooltip:not(.is-open) .download-tooltip-content {
+    transform: translateY(-4px);
   }
 }
