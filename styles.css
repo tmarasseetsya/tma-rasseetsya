@@ -2811,3 +2811,669 @@ main {
   grid-column: 7 / span 2;
   grid-row: 3;
 }
+
+/* Responsive layout: desktop geometry above 1440px remains the source composition. */
+@media (max-width: 1439px) {
+  :root {
+    --page-gutter: clamp(32px, 6.95vw, 100px);
+    --content-width: calc(100vw - var(--page-gutter) - var(--page-gutter));
+  }
+
+  body {
+    min-width: 0;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .intro-frame,
+  .forms-intro-frame,
+  .invisible-frame,
+  .forms-frame,
+  .partner-frame,
+  .sex-work-frame,
+  .detention-frame,
+  .bdsm-frame,
+  .disability-frame,
+  .conflict-frame,
+  .public-spaces-frame,
+  .contexts-summary-frame,
+  .rape-frame,
+  .during-frame,
+  .harassment-frame,
+  .grooming-frame,
+  .cyberflashing-frame,
+  .contraception-frame,
+  .reproductive-frame,
+  .fgm-frame,
+  .also-frame,
+  .methodology-frame,
+  .svetik-frame {
+    width: 100%;
+  }
+
+  .svetik-frame {
+    overflow: clip;
+  }
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --page-gutter: clamp(28px, 5vw, 52px);
+    --outline-card-text-size: 20px;
+  }
+
+  .guide-back-link {
+    top: 26px;
+    left: 24px;
+  }
+
+  .svetik-frame {
+    min-height: 440px;
+    padding: 82px var(--page-gutter) 0;
+  }
+
+  .svetik-card,
+  .svetik-note {
+    width: min(575px, 100%);
+  }
+
+  .svetik-patronus {
+    top: -66px;
+    right: -76px;
+    width: 245px;
+  }
+
+  .page-menu {
+    margin: 30px 0 62px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .page-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page-menu-list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    width: max-content;
+    min-width: 100%;
+    padding: 0 var(--page-gutter);
+  }
+
+  .page-menu-item {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .intro-frame {
+    padding: 52px var(--page-gutter) 60px;
+  }
+
+  .intro-title,
+  .intro-definition,
+  .forms-category-title,
+  .partner-title,
+  .sex-work-title,
+  .detention-title,
+  .bdsm-title,
+  .disability-title,
+  .conflict-title,
+  .public-spaces-title,
+  .during-title,
+  .harassment-title,
+  .grooming-title,
+  .cyberflashing-title,
+  .contraception-title,
+  .reproductive-title,
+  .fgm-title,
+  .also-title {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .intro-title,
+  .forms-title,
+  .methodology-title {
+    font-size: clamp(46px, 6.2vw, 58px);
+  }
+
+  .intro-definition {
+    margin: 36px 0 0;
+  }
+
+  .intro-definition-text > span,
+  .intro-bottom span {
+    white-space: normal;
+  }
+
+  .intro-grid,
+  .forms-grid,
+  .partner-grid,
+  .sex-work-grid,
+  .detention-grid,
+  .bdsm-grid,
+  .disability-grid,
+  .conflict-grid,
+  .public-spaces-grid,
+  .rape-grid,
+  .during-grid,
+  .harassment-grid,
+  .grooming-grid,
+  .cyberflashing-grid,
+  .contraception-grid,
+  .reproductive-grid,
+  .fgm-grid,
+  .also-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    width: 100%;
+  }
+
+  .intro-grid > *,
+  .forms-grid > *,
+  .partner-grid > *,
+  .sex-work-grid > *,
+  .detention-grid > *,
+  .bdsm-grid > *,
+  .disability-grid > *,
+  .conflict-grid > *,
+  .public-spaces-grid > *,
+  .rape-grid > *,
+  .during-grid > *,
+  .harassment-grid > *,
+  .grooming-grid > *,
+  .cyberflashing-grid > *,
+  .contraception-grid > *,
+  .reproductive-grid > *,
+  .fgm-grid > *,
+  .also-grid > * {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .intro-using,
+  .partner-grid-label,
+  .sex-work-grid-label {
+    grid-column: 1 / -1;
+  }
+
+  .form-card,
+  .partner-card,
+  .sex-work-card,
+  .detention-card,
+  .bdsm-card,
+  .disability-card,
+  .conflict-card,
+  .public-spaces-card,
+  .rape-card,
+  .during-card,
+  .harassment-card,
+  .grooming-card,
+  .cyberflashing-card,
+  .contraception-card,
+  .reproductive-card,
+  .fgm-card,
+  .also-card {
+    width: auto;
+    min-width: 0;
+    height: 180px;
+  }
+
+  .partner-title-line,
+  .sex-work-title-line,
+  .detention-title-line,
+  .bdsm-title-line,
+  .disability-title-line,
+  .conflict-title-line,
+  .public-spaces-title-line,
+  .rape-title-line {
+    width: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .contexts-summary-card {
+    width: 100%;
+  }
+
+  .methodology-section,
+  .methodology-section.is-scroll-ready {
+    height: auto !important;
+    min-height: 0;
+  }
+
+  .methodology-sticky,
+  .methodology-section.is-scroll-ready .methodology-sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .methodology-section.is-scroll-active::before {
+    display: none;
+  }
+
+  .methodology-frame {
+    min-height: 0;
+    padding: 66px var(--page-gutter) 82px;
+  }
+
+  .methodology-viewport,
+  .methodology-section.is-scroll-ready .methodology-viewport {
+    width: 100%;
+    margin-top: 72px;
+    overflow: visible;
+  }
+
+  .methodology-timeline {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    transform: none !important;
+  }
+
+  .methodology-timeline::before {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: 13px;
+    width: 1px;
+    height: auto;
+  }
+
+  .methodology-step {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0 0 70px 54px;
+    text-align: left;
+  }
+
+  .methodology-step::before {
+    top: 12px;
+    left: 13px;
+    width: 28px;
+    height: 0;
+    border-top: 1px solid #1f1f1f;
+    border-left: 0;
+  }
+
+  .methodology-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .methodology-step-title {
+    width: 100%;
+    text-align: left;
+  }
+
+  .methodology-tooltip-row {
+    justify-content: flex-start;
+  }
+
+  .partner-title-tooltip .info-tooltip-content,
+  .sex-work-title-tooltip .info-tooltip-content,
+  .detention-title-tooltip .info-tooltip-content,
+  .conflict-title-tooltip .info-tooltip-content,
+  .rape-title-tooltip .info-tooltip-content {
+    right: 0;
+    left: auto;
+  }
+
+  .methodology-section .info-tooltip-content,
+  .methodology-section .download-tooltip-content {
+    right: auto;
+    left: 0;
+    transform: translateY(-4px);
+  }
+
+  .methodology-section .info-tooltip:hover .info-tooltip-content,
+  .methodology-section .info-tooltip:focus-within .info-tooltip-content,
+  .download-tooltip:hover .download-tooltip-content,
+  .download-tooltip:focus-within .download-tooltip-content {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --page-gutter: clamp(18px, 5.4vw, 24px);
+    --outline-card-text-size: 18px;
+  }
+
+  .guide-back-link {
+    top: 18px;
+    left: 16px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .svetik-frame {
+    min-height: 0;
+    padding-top: 104px;
+    padding-bottom: 8px;
+  }
+
+  .svetik-card {
+    min-height: 0;
+    padding: 72px 22px 28px;
+  }
+
+  .svetik-copy {
+    width: 100%;
+  }
+
+  .svetik-intro,
+  .svetik-message,
+  .svetik-support {
+    font-size: 17px;
+    line-height: 1.32;
+  }
+
+  .svetik-patronus {
+    top: -74px;
+    right: -18px;
+    width: 170px;
+  }
+
+  .svetik-note-summary {
+    min-height: 58px;
+    gap: 16px;
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+
+  .svetik-note-body {
+    padding: 0 18px 22px;
+  }
+
+  .page-menu {
+    margin: 24px 0 46px;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  .page-menu-list {
+    gap: 22px;
+  }
+
+  .intro-frame,
+  .forms-frame,
+  .partner-frame {
+    padding-bottom: 82px;
+  }
+
+  .sex-work-frame,
+  .detention-frame,
+  .bdsm-frame,
+  .disability-frame,
+  .conflict-frame,
+  .public-spaces-frame,
+  .contexts-summary-frame,
+  .rape-frame,
+  .during-frame,
+  .harassment-frame,
+  .grooming-frame,
+  .cyberflashing-frame,
+  .contraception-frame,
+  .reproductive-frame,
+  .fgm-frame,
+  .also-frame {
+    padding-bottom: 82px;
+  }
+
+  .intro-title,
+  .forms-title,
+  .methodology-title {
+    font-size: clamp(38px, 12vw, 50px);
+  }
+
+  .intro-definition {
+    margin-top: 28px;
+  }
+
+  .intro-dash {
+    flex-basis: 22px;
+    width: 22px;
+    margin-right: 10px;
+  }
+
+  .intro-definition-text,
+  .forms-category-title,
+  .partner-title,
+  .sex-work-title,
+  .detention-title,
+  .bdsm-title,
+  .disability-title,
+  .conflict-title,
+  .public-spaces-title,
+  .rape-title,
+  .during-title,
+  .harassment-title,
+  .grooming-title,
+  .cyberflashing-title,
+  .contraception-title,
+  .reproductive-title,
+  .fgm-title,
+  .also-title {
+    font-size: 24px;
+    line-height: 1.04;
+  }
+
+  .forms-subtitle {
+    font-size: 23px;
+    line-height: 1.04;
+  }
+
+  .forms-note,
+  .partner-note,
+  .sex-work-note,
+  .detention-note,
+  .bdsm-note,
+  .disability-note,
+  .conflict-note,
+  .public-spaces-note,
+  .rape-note,
+  .during-note,
+  .harassment-note,
+  .grooming-note,
+  .cyberflashing-note,
+  .contraception-note,
+  .reproductive-note,
+  .fgm-note,
+  .partner-grid-label,
+  .sex-work-grid-label {
+    font-size: 19px;
+    line-height: 1.12;
+  }
+
+  .intro-grid,
+  .forms-grid,
+  .partner-grid,
+  .sex-work-grid,
+  .detention-grid,
+  .bdsm-grid,
+  .disability-grid,
+  .conflict-grid,
+  .public-spaces-grid,
+  .rape-grid,
+  .during-grid,
+  .harassment-grid,
+  .grooming-grid,
+  .cyberflashing-grid,
+  .contraception-grid,
+  .reproductive-grid,
+  .fgm-grid,
+  .also-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .intro-using,
+  .partner-grid-label,
+  .sex-work-grid-label {
+    grid-column: 1;
+  }
+
+  .intro-card,
+  .form-card,
+  .partner-card,
+  .sex-work-card,
+  .detention-card,
+  .bdsm-card,
+  .disability-card,
+  .conflict-card,
+  .public-spaces-card,
+  .rape-card,
+  .during-card,
+  .harassment-card,
+  .grooming-card,
+  .cyberflashing-card,
+  .contraception-card,
+  .reproductive-card,
+  .fgm-card,
+  .also-card {
+    display: flex;
+    min-height: 150px;
+    height: auto;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 62px 18px 24px;
+    border-radius: 32px;
+  }
+
+  .intro-card h3,
+  .partner-card-text,
+  .sex-work-card-text,
+  .detention-card-text,
+  .bdsm-card-text,
+  .disability-card-text,
+  .conflict-card-text,
+  .public-spaces-card-text,
+  .rape-card-text,
+  .during-card-text,
+  .harassment-card-text,
+  .grooming-card-text,
+  .cyberflashing-card-text,
+  .contraception-card-text,
+  .reproductive-card-text,
+  .fgm-card-text,
+  .also-card-text {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    transform: none;
+    white-space: normal;
+  }
+
+  .intro-card h3 {
+    font-size: 21px;
+  }
+
+  .collapse-heading-section {
+    display: block;
+    padding-left: 40px;
+  }
+
+  .collapse-toggle-section {
+    top: -8px;
+    right: auto;
+    left: 0;
+    width: 44px;
+    height: 44px;
+  }
+
+  .collapse-toggle-group {
+    width: 32px;
+    height: 32px;
+  }
+
+  .info-tooltip {
+    top: 16px;
+    right: 16px;
+  }
+
+  .info-tooltip-trigger,
+  .methodology-tooltip-row .info-tooltip-trigger,
+  .download-tooltip-trigger {
+    width: 32px;
+    height: 32px;
+  }
+
+  .info-tooltip-content,
+  .partner-title-tooltip .info-tooltip-content,
+  .sex-work-title-tooltip .info-tooltip-content,
+  .detention-title-tooltip .info-tooltip-content,
+  .conflict-title-tooltip .info-tooltip-content,
+  .rape-title-tooltip .info-tooltip-content,
+  .methodology-section .info-tooltip-content,
+  .methodology-section .download-tooltip-content {
+    width: min(280px, calc(100vw - 48px));
+    max-width: calc(100vw - 48px);
+  }
+
+  .info-tooltip-content,
+  .partner-title-tooltip .info-tooltip-content,
+  .sex-work-title-tooltip .info-tooltip-content,
+  .detention-title-tooltip .info-tooltip-content,
+  .conflict-title-tooltip .info-tooltip-content,
+  .rape-title-tooltip .info-tooltip-content {
+    right: 0;
+    left: auto;
+  }
+
+  .methodology-section .info-tooltip-content,
+  .methodology-section .download-tooltip-content {
+    right: auto;
+    left: 0;
+  }
+
+  .methodology-section .info-tooltip-content {
+    transform: translateY(-4px);
+  }
+
+  .methodology-section .info-tooltip:hover .info-tooltip-content,
+  .methodology-section .info-tooltip:focus-within .info-tooltip-content {
+    transform: translateY(0);
+  }
+
+  .contexts-summary-card {
+    padding: 24px 20px;
+  }
+
+  .contexts-summary-title,
+  .contexts-summary-text {
+    font-size: 16.5px;
+    line-height: 1.35;
+  }
+
+  .methodology-frame {
+    padding-top: 54px;
+    padding-bottom: 72px;
+  }
+
+  .methodology-viewport {
+    margin-top: 54px;
+  }
+
+  .methodology-step {
+    padding: 0 0 58px 44px;
+  }
+
+  .methodology-step-title {
+    font-size: 17px;
+    line-height: 1.2;
+  }
+}

@@ -706,6 +706,7 @@
   let stickyOffset = 0;
   let scrollFrame = 0;
   let resizeFrame = 0;
+  const stackedLayoutQuery = window.matchMedia("(max-width: 1100px)");
 
   const getStickyOffset = () => {
     const value = Number.parseFloat(
@@ -757,7 +758,7 @@
   const measureScrollEffect = () => {
     resizeFrame = 0;
 
-    if (section.classList.contains("is-collapsed")) {
+    if (section.classList.contains("is-collapsed") || stackedLayoutQuery.matches) {
       disableScrollEffect();
       return;
     }
@@ -789,6 +790,7 @@
   window.addEventListener("resize", requestMeasurement, { passive: true });
   window.addEventListener("load", requestMeasurement, { once: true });
   window.addEventListener("guide:layout-change", requestMeasurement);
+  stackedLayoutQuery.addEventListener("change", requestMeasurement);
 
   const classObserver = new MutationObserver(requestMeasurement);
   classObserver.observe(section, {
