@@ -2524,16 +2524,23 @@ main {
   transition: color 160ms ease;
 }
 
-.page-menu-item:is(:hover, .is-active)[data-section-color="gold"] {
+.page-menu-item.is-active[data-section-color="gold"] {
   color: var(--text-main);
 }
 
-.page-menu-item:is(:hover, .is-active)[data-section-color="blue"] {
+.page-menu-item.is-active[data-section-color="blue"] {
   color: var(--section-blue);
 }
 
-.page-menu-item[href="./index.html"]:hover {
-  color: var(--section-blue);
+@media (hover: hover) {
+  .page-menu-item:hover[data-section-color="gold"] {
+    color: var(--text-main);
+  }
+
+  .page-menu-item:hover[data-section-color="blue"],
+  .page-menu-item[href="./index.html"]:hover {
+    color: var(--section-blue);
+  }
 }
 
 .page-menu-item:focus-visible {
@@ -2948,6 +2955,23 @@ main {
     max-width: 100%;
   }
 
+  .collapse-heading-section {
+    display: block;
+    padding-left: 0;
+  }
+
+  .collapse-toggle-section {
+    top: -8px;
+    right: auto;
+    left: calc(-1 * var(--page-gutter));
+    width: var(--page-gutter);
+    height: 44px;
+  }
+
+  [data-collapse-member].is-content-collapsed > div {
+    padding-bottom: clamp(28px, 4vw, 44px);
+  }
+
   .intro-title,
   .forms-title,
   .methodology-title {
@@ -3049,6 +3073,36 @@ main {
     flex-wrap: wrap;
   }
 
+  .partner-title .partner-title-line,
+  .sex-work-title .sex-work-title-line,
+  .detention-title .detention-title-line,
+  .conflict-title .conflict-title-line,
+  .rape-title .rape-title-line {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .partner-title .partner-title-tooltip,
+  .sex-work-title .sex-work-title-tooltip,
+  .detention-title .detention-title-tooltip,
+  .conflict-title .conflict-title-tooltip,
+  .rape-title .rape-title-tooltip {
+    display: inline-flex;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .partner-title-tooltip .info-tooltip-trigger,
+  .sex-work-title-tooltip .info-tooltip-trigger,
+  .detention-title-tooltip .info-tooltip-trigger,
+  .conflict-title-tooltip .info-tooltip-trigger,
+  .rape-title-tooltip .info-tooltip-trigger {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+
   .contexts-summary-card {
     width: 100%;
   }
@@ -3091,15 +3145,11 @@ main {
     gap: 0;
     padding: 0;
     transform: none !important;
+    will-change: auto;
   }
 
   .methodology-timeline::before {
-    top: 0;
-    right: auto;
-    bottom: 0;
-    left: 13px;
-    width: 1px;
-    height: auto;
+    display: none;
   }
 
   .methodology-step {
@@ -3116,6 +3166,16 @@ main {
     height: 0;
     border-top: 1px solid #1f1f1f;
     border-left: 0;
+  }
+
+  .methodology-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    bottom: -12px;
+    left: 13px;
+    width: 1px;
+    background: #1f1f1f;
   }
 
   .methodology-step:last-child {
@@ -3152,6 +3212,28 @@ main {
   .methodology-section .info-tooltip.is-open .info-tooltip-content,
   .download-tooltip:hover .download-tooltip-content,
   .download-tooltip:focus-within .download-tooltip-content,
+  .download-tooltip.is-open .download-tooltip-content {
+    transform: translateY(0);
+  }
+
+  .info-tooltip.is-open .info-tooltip-content,
+  .download-tooltip.is-open .download-tooltip-content {
+    position: fixed;
+    top: var(--compact-tooltip-top, 16px);
+    right: auto;
+    left: var(--compact-tooltip-left, 16px);
+    width: min(400px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+    max-height: calc(100svh - 32px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .info-tooltip.is-open .info-tooltip-content,
+  .methodology-section .info-tooltip.is-open .info-tooltip-content {
+    transform: translateY(0);
+  }
+
   .download-tooltip.is-open .download-tooltip-content {
     transform: translateY(0);
   }
@@ -3252,9 +3334,18 @@ main {
   }
 
   .intro-title,
-  .forms-title,
-  .methodology-title {
+  .forms-title {
     font-size: clamp(38px, 12vw, 50px);
+  }
+
+  .methodology-title {
+    max-width: 100%;
+    font-size: clamp(28px, 9vw, 38px);
+    line-height: 1;
+  }
+
+  .methodology-title-line {
+    max-width: 100%;
   }
 
   .intro-definition {
@@ -3398,19 +3489,6 @@ main {
 
   .intro-card h3 {
     font-size: 21px;
-  }
-
-  .collapse-heading-section {
-    display: block;
-    padding-left: 40px;
-  }
-
-  .collapse-toggle-section {
-    top: -8px;
-    right: auto;
-    left: 0;
-    width: 44px;
-    height: 44px;
   }
 
   .collapse-toggle-group {

@@ -410,6 +410,7 @@
 
 (() => {
   const toggles = document.querySelectorAll(".collapse-toggle");
+  const compactSubcategoryQuery = window.matchMedia("(max-width: 1100px)");
 
   if (!toggles.length) {
     return;
@@ -442,6 +443,12 @@
       element.hidden = !expanded;
     });
 
+    if (toggle.classList.contains("collapse-toggle-section")) {
+      toggle
+        .closest("[data-collapse-member]")
+        ?.classList.toggle("is-content-collapsed", !expanded);
+    }
+
     if (toggle.classList.contains("collapse-toggle-methodology")) {
       const methodologySection = toggle.closest(".methodology-section");
 
@@ -456,6 +463,13 @@
   };
 
   toggles.forEach((toggle) => {
+    if (
+      compactSubcategoryQuery.matches &&
+      toggle.classList.contains("collapse-toggle-section")
+    ) {
+      setToggleState(toggle, false);
+    }
+
     toggle.addEventListener("click", () => {
       const expanded = toggle.getAttribute("aria-expanded") === "true";
 
@@ -476,12 +490,59 @@
 
   const triggerFor = (tooltip) =>
     tooltip.querySelector(".info-tooltip-trigger, .download-tooltip-trigger");
+  const contentFor = (tooltip) =>
+    tooltip.querySelector(".info-tooltip-content, .download-tooltip-content");
+  const compactTooltipQuery = window.matchMedia("(max-width: 1100px)");
+
+  const clearTooltipPosition = (tooltip) => {
+    const content = contentFor(tooltip);
+
+    content?.style.removeProperty("--compact-tooltip-left");
+    content?.style.removeProperty("--compact-tooltip-top");
+  };
+
+  const positionCompactTooltip = (tooltip) => {
+    const trigger = triggerFor(tooltip);
+    const content = contentFor(tooltip);
+
+    if (!compactTooltipQuery.matches || !trigger || !content) {
+      clearTooltipPosition(tooltip);
+      return;
+    }
+
+    const viewportMargin = 16;
+    const triggerGap = 8;
+    const triggerBounds = trigger.getBoundingClientRect();
+    const contentBounds = content.getBoundingClientRect();
+    const maximumLeft = Math.max(
+      viewportMargin,
+      window.innerWidth - viewportMargin - contentBounds.width
+    );
+    const centeredLeft =
+      triggerBounds.left + (triggerBounds.width - contentBounds.width) / 2;
+    const left = Math.min(maximumLeft, Math.max(viewportMargin, centeredLeft));
+    const maximumTop = Math.max(
+      viewportMargin,
+      window.innerHeight - viewportMargin - contentBounds.height
+    );
+    const belowTrigger = triggerBounds.bottom + triggerGap;
+    const aboveTrigger = triggerBounds.top - contentBounds.height - triggerGap;
+    const preferredTop =
+      belowTrigger + contentBounds.height <= window.innerHeight - viewportMargin
+        ? belowTrigger
+        : aboveTrigger;
+    const top = Math.min(maximumTop, Math.max(viewportMargin, preferredTop));
+
+    content.style.setProperty("--compact-tooltip-left", `${Math.round(left)}px`);
+    content.style.setProperty("--compact-tooltip-top", `${Math.round(top)}px`);
+  };
 
   const closeTooltip = (tooltip) => {
     const trigger = triggerFor(tooltip);
 
     tooltip.classList.remove("is-open");
     trigger?.setAttribute("aria-expanded", "false");
+    clearTooltipPosition(tooltip);
 
     if (document.activeElement === trigger) {
       trigger.blur();
@@ -521,8 +582,19 @@
 
       tooltip.classList.add("is-open");
       trigger.setAttribute("aria-expanded", "true");
+      positionCompactTooltip(tooltip);
     });
   });
+
+  const repositionOpenTooltip = () => {
+    const openTooltip = document.querySelector(
+      ".info-tooltip.is-open, .download-tooltip.is-open"
+    );
+
+    if (openTooltip) {
+      positionCompactTooltip(openTooltip);
+    }
+  };
 
   document.addEventListener("click", (event) => {
     if (!event.target.closest(".info-tooltip, .download-tooltip")) {
@@ -543,6 +615,9 @@
       closeTooltip(openTooltip);
     }
   });
+
+  window.addEventListener("resize", repositionOpenTooltip, { passive: true });
+  compactTooltipQuery.addEventListener("change", repositionOpenTooltip);
 })();
 
 (() => {
@@ -901,13 +976,20 @@
   let menuStickPoint = 0;
   const compactMenuQuery = window.matchMedia("(max-width: 1100px)");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const homeLink = menuList.querySelector('.page-menu-item[href="./index.html"]');
+  const finalSectionLink = sectionLinks[sectionLinks.length - 1]?.link ?? null;
 
   const revealActiveLink = (link) => {
     if (!link || !compactMenuQuery.matches) {
       return;
     }
 
-    const targetLeft = link.offsetLeft - (menuList.clientWidth - link.offsetWidth) / 2;
+    const computedMenuList = window.getComputedStyle(menuList);
+    const inlinePaddingEnd = Number.parseFloat(computedMenuList.paddingRight) || 0;
+    const targetLeft =
+      link === finalSectionLink && homeLink
+        ? homeLink.offsetLeft + homeLink.offsetWidth + inlinePaddingEnd - menuList.clientWidth
+        : link.offsetLeft - (menuList.clientWidth - link.offsetWidth) / 2;
 
     menuList.scrollTo({
       left: Math.max(0, targetLeft),
