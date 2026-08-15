@@ -10223,7 +10223,6 @@
       return;
     }
     const config = {
-      textureUrl: "./\u043A\u0430\u0440\u0442\u0430 \u0441\u0430\u0439\u0442\u0430 \u0432 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0438 3.png",
       panelCount: 10,
       centerPanelSpan: 2,
       heightWorld: 4,
@@ -10254,6 +10253,8 @@
     const folds = [];
     const disposable = [];
     let baseTexture = null;
+    let textureSource = "";
+    let textureLoadVersion = 0;
     let centerMaterial = null;
     let flatMaterial = null;
     let frame = 0;
@@ -10483,10 +10484,8 @@
       const mapHeight = Math.max(1, Math.round(mapBounds.height || height - overscanY * 2));
       const verticalWidth = Math.max(1, verticalBounds.width || mapWidth);
       const naturalClosedWidth = mapWidth * (config.centerPanelSpan / config.panelCount);
-      const closedScaleX = Math.min(
-        2.25,
-        Math.max(0.5, verticalWidth / naturalClosedWidth)
-      );
+      const compactLayout = window.matchMedia("(max-width: 1100px)").matches;
+      const closedScaleX = compactLayout ? 1 : Math.min(2.25, Math.max(0.5, verticalWidth / naturalClosedWidth));
       if (width === size.width && height === size.height && mapWidth === size.mapWidth && mapHeight === size.mapHeight && closedScaleX === size.closedScaleX) {
         return;
       }
@@ -10514,11 +10513,7 @@
     const renderProgress = (progress) => {
       resize();
       const p2 = clamp(progress);
-      const scaleProgress = ease(smoothStep(
-        config.scaleReleaseStart,
-        config.scaleReleaseEnd,
-        p2
-      ));
+      const scaleProgress = ease(smoothStep(config.scaleReleaseStart, config.scaleReleaseEnd, p2));
       model.scale.x = size.closedScaleX + (1 - size.closedScaleX) * scaleProgress;
       folds.forEach((fold) => {
         const localProgress = ease((p2 - fold.delay) / (1 - fold.delay));
@@ -10533,18 +10528,10 @@
         fold.creaseMaterial.opacity = config.creaseLineStrength * (0.22 + foldedAmount * 0.78);
       });
       if (centerMaterial) {
-        centerMaterial.opacity = smoothStep(
-          config.centerRevealStart,
-          config.centerRevealEnd,
-          p2
-        );
+        centerMaterial.opacity = smoothStep(config.centerRevealStart, config.centerRevealEnd, p2);
       }
       if (flatMaterial) {
-        flatMaterial.opacity = smoothStep(
-          config.flatRevealStart,
-          config.flatRevealEnd,
-          p2
-        );
+        flatMaterial.opacity = smoothStep(config.flatRevealStart, config.flatRevealEnd, p2);
       }
       renderer.render(scene, camera);
     };
@@ -10601,21 +10588,39 @@
       attributeFilter: ["class"]
     });
     window.addEventListener("resize", () => {
-      resize();
-      if (isRunning) {
+      window.requestAnimationFrame(() => {
+        loadResponsiveTexture();
+        resize();
+        if (isRunning) {
+          return;
+        }
+        renderProgress(section.classList.contains("is-state-three") ? 1 : 0);
+      });
+    });
+    function loadResponsiveTexture() {
+      const nextSource = stateThreeLayer.currentSrc || stateThreeLayer.src;
+      if (!nextSource || nextSource === textureSource) {
         return;
       }
-      renderProgress(section.classList.contains("is-state-three") ? 1 : 0);
-    });
-    textureLoader.load(config.textureUrl, (texture) => {
-      texture.colorSpace = es;
-      texture.wrapS = yt;
-      texture.wrapT = yt;
-      baseTexture = texture;
-      resize();
-      renderProgress(0);
-      syncWithState();
-    });
+      const loadVersion = ++textureLoadVersion;
+      textureLoader.load(nextSource, (texture) => {
+        if (loadVersion !== textureLoadVersion) {
+          texture.dispose();
+          return;
+        }
+        baseTexture == null ? void 0 : baseTexture.dispose();
+        texture.colorSpace = es;
+        texture.wrapS = yt;
+        texture.wrapT = yt;
+        baseTexture = texture;
+        textureSource = nextSource;
+        resize();
+        renderProgress(0);
+        syncWithState();
+      });
+    }
+    stateThreeLayer.addEventListener("load", loadResponsiveTexture);
+    loadResponsiveTexture();
   })();
 })();
 /**
