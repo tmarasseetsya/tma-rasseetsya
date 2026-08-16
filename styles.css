@@ -3290,9 +3290,44 @@ main {
   .detention-title-tooltip .info-tooltip-trigger,
   .conflict-title-tooltip .info-tooltip-trigger,
   .rape-title-tooltip .info-tooltip-trigger {
-    width: 24px;
-    height: 24px;
-    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    font-size: 0;
+  }
+
+  .info-tooltip-trigger,
+  .methodology-tooltip-row .info-tooltip-trigger {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border: 0;
+    font-size: 0;
+  }
+
+  .info-tooltip-trigger::before,
+  .info-tooltip-trigger::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: "";
+  }
+
+  .info-tooltip-trigger::before {
+    width: 20px;
+    height: 20px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+  }
+
+  .info-tooltip-trigger::after {
+    color: currentColor;
+    content: "i";
+    font-family: var(--font-unicase);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
   }
 
   .contexts-summary-card {
@@ -3419,6 +3454,13 @@ main {
     max-height: calc(100svh - 32px);
     overflow-y: auto;
     overscroll-behavior: contain;
+  }
+
+  .info-tooltip-content,
+  .download-tooltip-content {
+    padding: 14px 16px;
+    font-size: clamp(16px, 2.2vw, 17px);
+    line-height: 1.4;
   }
 
   .info-tooltip.is-open .info-tooltip-content,
@@ -3738,8 +3780,8 @@ main {
   .rape-title-tooltip .info-tooltip-content,
   .methodology-section .info-tooltip-content,
   .methodology-section .download-tooltip-content {
-    width: min(280px, calc(100vw - 48px));
-    max-width: calc(100vw - 48px);
+    width: min(340px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
   }
 
   .info-tooltip-content,
