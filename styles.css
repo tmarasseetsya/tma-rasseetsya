@@ -42,7 +42,7 @@
   --page-bg: #ece5ca;
   --text-main: #bea753;
   --text-muted: #cbbc85;
-  --section-blue: #4088A5;
+  --section-blue: #4088a5;
   /* Base size for all blue outline cards in the current and future sections */
   --outline-card-text-size: 22px;
   --content-width: 1240px;
@@ -52,7 +52,7 @@
   --font-tooltip: "Montserrat Local", Montserrat, Arial, sans-serif;
   --font-montserrat-light: "Montserrat Light Local", Montserrat, Arial, sans-serif;
   --font-montserrat-regular: "Montserrat Regular Local", Montserrat, Arial, sans-serif;
-  --svetik-orange: #F9991B;
+  --svetik-orange: #f9991b;
   --site-scrollbar-track: #f2ead2;
   --site-scrollbar-thumb: #c6bea0;
   --site-scrollbar-thumb-hover: #c6b365;
@@ -113,6 +113,141 @@ body {
 
 main {
   min-height: 100vh;
+}
+
+.trigger-warning {
+  position: relative;
+  z-index: 40;
+  width: 100%;
+  height: 0;
+  color: var(--section-blue);
+  pointer-events: none;
+}
+
+.trigger-warning[hidden] {
+  display: none;
+}
+
+.trigger-warning-frame {
+  width: 1440px;
+  margin: 0 auto;
+  padding: 70px var(--page-gutter) 0;
+}
+
+.trigger-warning-panel {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 42px 48px 44px;
+  border: 1px solid rgba(64, 136, 165, 0.78);
+  border-radius: 36px;
+  background: rgba(236, 229, 202, 0.94);
+  box-shadow:
+    0 24px 70px rgba(46, 73, 83, 0.18),
+    0 2px 12px rgba(64, 136, 165, 0.12);
+  backdrop-filter: blur(18px) saturate(0.78);
+  pointer-events: auto;
+}
+
+.trigger-warning-title,
+.trigger-warning-copy {
+  margin: 0;
+}
+
+.trigger-warning-title {
+  font-family: var(--font-unicase);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 0.98;
+  text-align: center;
+}
+
+.trigger-warning-copy {
+  max-width: 760px;
+  margin: 24px auto 0;
+  color: #355d6c;
+  font-family: var(--font-montserrat-regular);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.trigger-warning-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.trigger-warning-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border: 1px solid var(--section-blue);
+  border-radius: 999px;
+  font-family: var(--font-tooltip);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.trigger-warning-button-open {
+  background: rgba(236, 229, 202, 0.58);
+  color: #527783;
+}
+
+.trigger-warning-button-open:hover {
+  border-color: #668996;
+  background: rgba(236, 229, 202, 0.92);
+  color: #355d6c;
+}
+
+.trigger-warning-button-safe {
+  border-color: #2f718a;
+  background: #2f718a;
+  color: #fffaf0;
+  box-shadow: 0 8px 22px rgba(47, 113, 138, 0.24);
+}
+
+.trigger-warning-button-safe:hover {
+  border-color: #275f74;
+  background: #275f74;
+  box-shadow: 0 10px 26px rgba(39, 95, 116, 0.3);
+  transform: translateY(-1px);
+}
+
+.trigger-warning-button:focus-visible {
+  outline: 3px solid #1f5a72;
+  outline-offset: 4px;
+}
+
+.trigger-warning-active [data-trigger-protected] {
+  overflow: clip;
+  pointer-events: none;
+  user-select: none;
+}
+
+.trigger-warning-active [data-trigger-protected] .collapse-heading,
+.trigger-warning-active [data-trigger-protected] .collapsible-section-content {
+  filter: blur(10px);
+  opacity: 0.34;
+}
+
+.trigger-warning-active [data-trigger-control] {
+  filter: blur(5px);
+  opacity: 0.38;
+  pointer-events: none;
 }
 
 .guide-back-link {
@@ -1747,7 +1882,10 @@ main {
   visibility: hidden;
   pointer-events: none;
   transform: translate(-50%, -4px);
-  transition: opacity 160ms ease, transform 160ms ease, visibility 0s linear 160ms;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    visibility 0s linear 160ms;
 }
 
 .download-tooltip-content::before {
@@ -2099,7 +2237,9 @@ main {
   opacity: 0;
   pointer-events: none;
   transform: translateY(-4px);
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
 }
 
 .info-tooltip:hover,
@@ -2830,6 +2970,7 @@ main {
   }
 
   .intro-frame,
+  .trigger-warning-frame,
   .forms-intro-frame,
   .invisible-frame,
   .forms-frame,
@@ -2872,9 +3013,21 @@ main {
     left: 24px;
   }
 
+  .trigger-warning-frame {
+    padding: clamp(34px, 5vw, 52px) calc(var(--page-gutter) + var(--guide-content-inset)) 0;
+  }
+
+  .trigger-warning-panel {
+    padding: 38px clamp(30px, 5vw, 44px) 40px;
+  }
+
+  .trigger-warning-title {
+    font-size: clamp(34px, 5vw, 42px);
+  }
+
   .svetik-frame {
     min-height: 440px;
-    padding: 82px var(--page-gutter) 0;
+    padding: clamp(132px, 18vw, 160px) var(--page-gutter) 0;
   }
 
   .svetik-card,
@@ -2912,9 +3065,9 @@ main {
   }
 
   .svetik-patronus {
-    top: -66px;
-    right: -76px;
-    width: 245px;
+    top: clamp(-174px, calc(20px - 30.6vw), -80px);
+    right: clamp(-8px, -1.7vw, -6px);
+    width: clamp(195px, 60vw, 380px);
   }
 
   .page-menu {
@@ -3298,9 +3451,42 @@ main {
     height: 44px;
   }
 
+  .trigger-warning-frame {
+    padding: 24px var(--page-gutter) 0;
+  }
+
+  .trigger-warning-panel {
+    padding: 30px 22px 24px;
+    border-radius: 28px;
+  }
+
+  .trigger-warning-title {
+    font-size: clamp(28px, 9vw, 34px);
+    line-height: 1;
+  }
+
+  .trigger-warning-copy {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .trigger-warning-actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .trigger-warning-button {
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+
   .svetik-frame {
     min-height: 0;
-    padding-top: 104px;
+    padding-top: clamp(104px, 22vw, 132px);
     padding-bottom: 8px;
   }
 
@@ -3318,12 +3504,6 @@ main {
   .svetik-support {
     font-size: 17px;
     line-height: 1.32;
-  }
-
-  .svetik-patronus {
-    top: -74px;
-    right: -18px;
-    width: 170px;
   }
 
   .svetik-note-summary,

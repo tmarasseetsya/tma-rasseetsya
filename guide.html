@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./footer.css" />
   </head>
-  <body>
+  <body class="trigger-warning-active">
     <main>
       <section class="svetik-section" aria-label="Вступительный блок">
         <div class="svetik-frame">
@@ -79,12 +79,18 @@
               </p>
 
             </div>
-            <img
-              class="svetik-patronus"
-              src="./images/патронус Выдра.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <picture>
+              <source
+                media="(max-width: 1100px)"
+                srcset="./images/мобилка/выдра%20ремувбг.png"
+              />
+              <img
+                class="svetik-patronus"
+                src="./images/патронус Выдра.png"
+                alt=""
+                aria-hidden="true"
+              />
+            </picture>
           </div>
 
           <details class="svetik-note">
@@ -203,13 +209,55 @@
                 data-collapse-group="forms"
                 data-collapse-label="Свернуть раздел «Насилие многолико»"
                 data-expand-label="Развернуть раздел «Насилие многолико»"
+                data-trigger-control
+                aria-disabled="true"
+                disabled
               ></button>
             </span>
           </p>
         </div>
       </section>
 
-      <section class="forms-section" id="forms-section-panel" data-collapse-member="forms" aria-labelledby="forms-title">
+      <section
+        class="trigger-warning"
+        id="guide-trigger-warning"
+        role="region"
+        aria-labelledby="guide-trigger-warning-title"
+        aria-describedby="guide-trigger-warning-copy"
+      >
+        <div class="trigger-warning-frame">
+          <div class="trigger-warning-panel">
+            <h2 class="trigger-warning-title" id="guide-trigger-warning-title">
+              Предупреждение о триггерах (tw)
+            </h2>
+            <p class="trigger-warning-copy" id="guide-trigger-warning-copy">
+              Материалы этой страницы являются триггерными для переживших насилие: могут возникать психологические и физиологические реакции. Будьте бережны к себе и не читайте эти материалы, если чувствуете себя уязвимо. Эта страница для тех, кто не переживал насилие и хочет начать разбираться в этой проблеме.
+            </p>
+            <div class="trigger-warning-actions">
+              <button
+                class="trigger-warning-button trigger-warning-button-open"
+                type="button"
+                data-trigger-open
+              >
+                Открыть материалы
+              </button>
+              <a class="trigger-warning-button trigger-warning-button-safe" href="./index.html">
+                Не открывать материалы
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="forms-section"
+        id="forms-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="forms-title"
+      >
         <div class="forms-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -257,7 +305,15 @@
         </div>
       </section>
 
-      <section class="rape-section" id="rape-section-panel" data-collapse-member="forms" aria-labelledby="rape-title">
+      <section
+        class="rape-section"
+        id="rape-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="rape-title"
+      >
         <div class="rape-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -405,7 +461,15 @@
         </div>
       </section>
 
-      <section class="during-section" id="during-section-panel" data-collapse-member="forms" aria-labelledby="during-title">
+      <section
+        class="during-section"
+        id="during-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="during-title"
+      >
         <div class="during-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -473,7 +537,15 @@
         </div>
       </section>
 
-      <section class="harassment-section" id="harassment-section-panel" data-collapse-member="forms" aria-labelledby="harassment-title">
+      <section
+        class="harassment-section"
+        id="harassment-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="harassment-title"
+      >
         <div class="harassment-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -538,7 +610,15 @@
         </div>
       </section>
 
-      <section class="grooming-section" id="grooming-section-panel" data-collapse-member="forms" aria-labelledby="grooming-title">
+      <section
+        class="grooming-section"
+        id="grooming-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="grooming-title"
+      >
         <div class="grooming-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -589,7 +669,15 @@
         </div>
       </section>
 
-      <section class="cyberflashing-section" id="cyberflashing-section-panel" data-collapse-member="forms" aria-labelledby="cyberflashing-title">
+      <section
+        class="cyberflashing-section"
+        id="cyberflashing-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="cyberflashing-title"
+      >
         <div class="cyberflashing-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -645,7 +733,15 @@
         </div>
       </section>
 
-      <section class="contraception-section" id="contraception-section-panel" data-collapse-member="forms" aria-labelledby="contraception-title">
+      <section
+        class="contraception-section"
+        id="contraception-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="contraception-title"
+      >
         <div class="contraception-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -697,7 +793,15 @@
         </div>
       </section>
 
-      <section class="reproductive-section" id="reproductive-section-panel" data-collapse-member="forms" aria-labelledby="reproductive-title">
+      <section
+        class="reproductive-section"
+        id="reproductive-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="reproductive-title"
+      >
         <div class="reproductive-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -749,7 +853,15 @@
         </div>
       </section>
 
-      <section class="fgm-section" id="fgm-section-panel" data-collapse-member="forms" aria-labelledby="fgm-title">
+      <section
+        class="fgm-section"
+        id="fgm-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="fgm-title"
+      >
         <div class="fgm-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -814,7 +926,15 @@
         </div>
       </section>
 
-      <section class="also-section" id="also-section-panel" data-collapse-member="forms" aria-labelledby="also-title">
+      <section
+        class="also-section"
+        id="also-section-panel"
+        data-collapse-member="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="also-title"
+      >
         <div class="also-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -948,13 +1068,24 @@
                 data-collapse-group="invisible"
                 data-collapse-label="Свернуть раздел «Невидимое насилие»"
                 data-expand-label="Развернуть раздел «Невидимое насилие»"
+                data-trigger-control
+                aria-disabled="true"
+                disabled
               ></button>
             </span>
           </p>
         </div>
       </section>
 
-      <section class="partner-section" id="partner-section-panel" data-collapse-member="invisible" aria-labelledby="partner-title">
+      <section
+        class="partner-section"
+        id="partner-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="partner-title"
+      >
         <div class="partner-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -1047,7 +1178,15 @@
         </div>
       </section>
 
-      <section class="sex-work-section" id="sex-work-section-panel" data-collapse-member="invisible" aria-labelledby="sex-work-title">
+      <section
+        class="sex-work-section"
+        id="sex-work-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="sex-work-title"
+      >
         <div class="sex-work-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -1163,7 +1302,15 @@
         </div>
       </section>
 
-      <section class="detention-section" id="detention-section-panel" data-collapse-member="invisible" aria-labelledby="detention-title">
+      <section
+        class="detention-section"
+        id="detention-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="detention-title"
+      >
         <div class="detention-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -1223,7 +1370,15 @@
         </div>
       </section>
 
-      <section class="bdsm-section" id="bdsm-section-panel" data-collapse-member="invisible" aria-labelledby="bdsm-title">
+      <section
+        class="bdsm-section"
+        id="bdsm-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="bdsm-title"
+      >
         <div class="bdsm-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -1282,7 +1437,15 @@
         </div>
       </section>
 
-      <section class="disability-section" id="disability-section-panel" data-collapse-member="invisible" aria-labelledby="disability-title">
+      <section
+        class="disability-section"
+        id="disability-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="disability-title"
+      >
         <div class="disability-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -1352,7 +1515,15 @@
         </div>
       </section>
 
-      <section class="conflict-section" id="conflict-section-panel" data-collapse-member="invisible" aria-labelledby="conflict-title">
+      <section
+        class="conflict-section"
+        id="conflict-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="conflict-title"
+      >
         <div class="conflict-frame">
           <div class="collapse-heading collapse-heading-section">
             <button
@@ -1450,7 +1621,15 @@
         </div>
       </section>
 
-      <section class="public-spaces-section" id="public-spaces-section-panel" data-collapse-member="invisible" aria-labelledby="public-spaces-title">
+      <section
+        class="public-spaces-section"
+        id="public-spaces-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="public-spaces-title"
+      >
         <div class="public-spaces-frame">
           <div class="collapse-heading collapse-heading-section">
             <button

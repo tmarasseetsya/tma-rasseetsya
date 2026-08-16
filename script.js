@@ -409,6 +409,53 @@
 })();
 
 (() => {
+  const warning = document.getElementById("guide-trigger-warning");
+  const openButton = warning?.querySelector("[data-trigger-open]");
+  const protectedSections = [...document.querySelectorAll("[data-trigger-protected]")];
+  const protectedControls = [...document.querySelectorAll("[data-trigger-control]")];
+
+  if (!warning || !openButton || protectedSections.length === 0) {
+    return;
+  }
+
+  const setMaterialsLocked = (locked) => {
+    document.body.classList.toggle("trigger-warning-active", locked);
+    warning.hidden = !locked;
+
+    protectedSections.forEach((section) => {
+      if (locked) {
+        section.setAttribute("inert", "");
+        section.setAttribute("aria-hidden", "true");
+      } else {
+        section.removeAttribute("inert");
+        section.removeAttribute("aria-hidden");
+      }
+    });
+
+    protectedControls.forEach((control) => {
+      control.disabled = locked;
+      control.setAttribute("aria-disabled", String(locked));
+    });
+
+    window.dispatchEvent(new Event("guide:layout-change"));
+  };
+
+  openButton.addEventListener("click", () => {
+    const firstProtectedHeading = protectedSections[0].querySelector("h2");
+
+    setMaterialsLocked(false);
+
+    if (firstProtectedHeading) {
+      firstProtectedHeading.setAttribute("tabindex", "-1");
+      firstProtectedHeading.focus({ preventScroll: true });
+    }
+  });
+
+  window.addEventListener("pagehide", () => setMaterialsLocked(true));
+  window.addEventListener("pageshow", () => setMaterialsLocked(true));
+})();
+
+(() => {
   const toggles = document.querySelectorAll(".collapse-toggle");
   const compactSubcategoryQuery = window.matchMedia("(max-width: 1100px)");
 
