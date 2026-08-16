@@ -1287,14 +1287,14 @@ html.site-intro-pending .site-intro {
 @keyframes site-map-ink-reveal-portrait {
   0% {
     -webkit-mask-size:
-      12% 3%,
-      10% 3%,
-      12% 3%,
+      18% 3%,
+      24% 4%,
+      18% 3%,
       100% 1.5%;
     mask-size:
-      12% 3%,
-      10% 3%,
-      12% 3%,
+      18% 3%,
+      24% 4%,
+      18% 3%,
       100% 1.5%;
     filter: blur(7px) saturate(0.76);
     opacity: 0;
@@ -1302,45 +1302,45 @@ html.site-intro-pending .site-intro {
 
   32% {
     -webkit-mask-size:
-      42% 20%,
-      38% 18%,
-      44% 22%,
-      108% 18%;
+      34% 28%,
+      42% 34%,
+      34% 28%,
+      104% 24%;
     mask-size:
-      42% 20%,
-      38% 18%,
-      44% 22%,
-      108% 18%;
+      34% 28%,
+      42% 34%,
+      34% 28%,
+      104% 24%;
     filter: blur(3px) saturate(0.9);
     opacity: 0.72;
   }
 
   66% {
     -webkit-mask-size:
-      88% 46%,
-      82% 42%,
-      92% 48%,
-      116% 68%;
+      68% 78%,
+      76% 86%,
+      68% 78%,
+      110% 72%;
     mask-size:
-      88% 46%,
-      82% 42%,
-      92% 48%,
-      116% 68%;
+      68% 78%,
+      76% 86%,
+      68% 78%,
+      110% 72%;
     filter: blur(1px) saturate(1);
     opacity: 0.96;
   }
 
   100% {
     -webkit-mask-size:
-      138% 72%,
-      132% 70%,
-      142% 74%,
-      124% 124%;
+      120% 136%,
+      126% 142%,
+      120% 136%,
+      112% 128%;
     mask-size:
-      138% 72%,
-      132% 70%,
-      142% 74%,
-      124% 124%;
+      120% 136%,
+      126% 142%,
+      120% 136%,
+      112% 128%;
     filter: blur(0);
     opacity: 1;
   }
@@ -1572,7 +1572,13 @@ html.site-intro-pending .site-intro {
   }
 
   .home-site-map-section.is-flap-opening .site-map-vertical {
-    opacity: 1;
+    opacity: 0;
+    transition: none;
+  }
+
+  .home-site-map-section.is-flap-opening .site-map-horizontal,
+  .home-site-map-section.is-state-three .site-map-horizontal {
+    transition: none;
   }
 
   .home-site-map-section.is-flap-opening .site-map-horizontal {
@@ -1580,7 +1586,7 @@ html.site-intro-pending .site-intro {
   }
 
   .site-map-actions {
-    top: 29%;
+    top: 5%;
     left: 12%;
     display: grid;
     width: min(76%, 570px);
@@ -1600,13 +1606,39 @@ html.site-intro-pending .site-intro {
     height: auto;
     min-height: clamp(42px, 5.6vw, 56px);
     padding: 7px 10px 8px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 236, 162, 0.025)),
+      rgba(91, 78, 42, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -10px 17px rgba(72, 58, 28, 0.06),
+      0 6px 14px rgba(50, 35, 12, 0.08);
     font-size: clamp(10px, 1.55vw, 14px);
     line-height: 1.08;
+    backdrop-filter: blur(3px) saturate(1.12);
+    -webkit-backdrop-filter: blur(3px) saturate(1.12);
   }
 
   .site-map-action-primary {
+    width: min(46%, 300px);
     min-height: clamp(68px, 8.4vw, 86px);
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-bottom: clamp(84px, 15vw, 132px);
     padding-inline: 12px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(205, 238, 136, 0.07)),
+      rgba(102, 122, 58, 0.3);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -18px 22px rgba(96, 74, 25, 0.09),
+      0 8px 20px rgba(50, 35, 12, 0.12);
+  }
+
+  .site-map-action-primary:hover {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(205, 238, 136, 0.1)),
+      rgba(113, 136, 64, 0.36);
   }
 
   .home-site-map-section.is-state-four-revealing .site-map-layer-state-4 {
@@ -1616,9 +1648,9 @@ html.site-intro-pending .site-intro {
       radial-gradient(ellipse at center, #000 0%, #000 19%, transparent 61%),
       linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
     -webkit-mask-position:
-      34% 20%,
-      67% 49%,
-      43% 79%,
+      25% 50%,
+      50% 50%,
+      75% 50%,
       50% 50%;
     -webkit-mask-repeat: no-repeat;
     mask-image:
@@ -1627,9 +1659,9 @@ html.site-intro-pending .site-intro {
       radial-gradient(ellipse at center, #000 0%, #000 19%, transparent 61%),
       linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
     mask-position:
-      34% 20%,
-      67% 49%,
-      43% 79%,
+      25% 50%,
+      50% 50%,
+      75% 50%,
       50% 50%;
     mask-repeat: no-repeat;
     animation-name: site-map-ink-reveal-portrait;
@@ -1676,7 +1708,7 @@ html.site-intro-pending .site-intro {
   }
 
   .site-map-actions {
-    top: 29%;
+    top: 5%;
     left: 9%;
     width: min(82%, 360px);
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1691,8 +1723,16 @@ html.site-intro-pending .site-intro {
   }
 
   .site-map-action-primary {
+    width: 70%;
     min-height: clamp(66px, 18vw, 78px);
+    margin-bottom: clamp(72px, 22vw, 132px);
     padding-inline: 9px;
+  }
+
+  .site-map-action-survivors {
+    width: calc((100% - 8px) / 2);
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 }
 

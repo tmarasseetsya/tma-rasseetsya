@@ -2191,19 +2191,6 @@ main {
   animation-delay: 2412ms;
 }
 
-.svetik-note + .svetik-note + .svetik-note {
-  animation-delay: 2572ms;
-}
-
-.svetik-note-trigger-warning {
-  --svetik-note-border-color: rgb(158 62 62 / 64%);
-  --svetik-note-border-color-open: rgb(143 47 47 / 82%);
-}
-
-.svetik-note-trigger-warning .svetik-note-summary:focus-visible {
-  outline-color: #9e3e3e;
-}
-
 .svetik-note[open] {
   background: rgb(236 229 202 / 46%);
 }
@@ -2234,6 +2221,7 @@ main {
   font-weight: 400;
   line-height: 1.35;
   list-style: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .svetik-note-summary::-webkit-details-marker {
@@ -2874,6 +2862,7 @@ main {
 
 @media (max-width: 1100px) {
   :root {
+    --guide-content-inset: clamp(20px, 3.2vw, 32px);
     --page-gutter: clamp(28px, 5vw, 52px);
     --outline-card-text-size: 20px;
   }
@@ -2891,6 +2880,35 @@ main {
   .svetik-card,
   .svetik-note {
     width: min(575px, 100%);
+  }
+
+  .svetik-intro br,
+  .svetik-message br,
+  .svetik-support br {
+    display: none;
+  }
+
+  .svetik-intro,
+  .svetik-message,
+  .svetik-support {
+    text-wrap: pretty;
+  }
+
+  .svetik-note-summary,
+  .svetik-note[open] .svetik-note-summary {
+    min-height: 54px;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 14px 24px 13px 54px;
+    background: transparent;
+  }
+
+  .svetik-note[open] .svetik-note-arrow {
+    margin-top: 0;
+  }
+
+  .svetik-note-body {
+    padding-top: 7px;
   }
 
   .svetik-patronus {
@@ -2960,11 +2978,32 @@ main {
     padding-left: 0;
   }
 
+  .forms-frame,
+  .partner-frame,
+  .sex-work-frame,
+  .detention-frame,
+  .bdsm-frame,
+  .disability-frame,
+  .conflict-frame,
+  .public-spaces-frame,
+  .rape-frame,
+  .during-frame,
+  .harassment-frame,
+  .grooming-frame,
+  .cyberflashing-frame,
+  .contraception-frame,
+  .reproductive-frame,
+  .fgm-frame,
+  .also-frame {
+    padding-right: calc(var(--page-gutter) + var(--guide-content-inset));
+    padding-left: calc(var(--page-gutter) + var(--guide-content-inset));
+  }
+
   .collapse-toggle-section {
     top: -8px;
     right: auto;
-    left: calc(-1 * var(--page-gutter));
-    width: var(--page-gutter);
+    left: calc(0px - var(--page-gutter) - var(--guide-content-inset));
+    width: calc(var(--page-gutter) + var(--guide-content-inset));
     height: 44px;
   }
 
@@ -3287,15 +3326,18 @@ main {
     width: 170px;
   }
 
-  .svetik-note-summary {
+  .svetik-note-summary,
+  .svetik-note[open] .svetik-note-summary {
     min-height: 58px;
+    align-items: center;
+    margin-bottom: 0;
     gap: 16px;
     padding: 14px 18px;
     font-size: 15px;
   }
 
   .svetik-note-body {
-    padding: 0 18px 22px;
+    padding: 7px 18px 22px;
   }
 
   .page-menu {
