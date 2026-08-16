@@ -209,8 +209,9 @@
 
     const light = document.createElement("span");
     const sizeBase = isMobile ? 2.1 : 2.4;
-    const size = sizeBase + point.energy * (isMobile ? 2.0 : 2.5)
-      + seededNoise(index, 1) * 0.42;
+    const phaseScale = isMobile && point.phase === 1 ? 0.52 : 1;
+    const size = (sizeBase + point.energy * (isMobile ? 2.0 : 2.5)
+      + seededNoise(index, 1) * 0.42) * phaseScale;
     const opacityHigh = Math.min(
       0.98,
       0.52 + point.energy * 0.46 + seededNoise(index, 2) * 0.04
@@ -364,6 +365,11 @@
     return;
   }
 
+  if (window.matchMedia("(max-width: 1100px)").matches) {
+    card.classList.add("is-compact-copy-reveal");
+    return;
+  }
+
   let letterIndex = 0;
   const letterStep = 8;
 
@@ -411,17 +417,35 @@
 (() => {
   const warning = document.getElementById("guide-trigger-warning");
   const openButton = warning?.querySelector("[data-trigger-open]");
+  const keepButton = warning?.querySelector("[data-trigger-keep]");
+  const feedback = warning?.querySelector("[data-trigger-feedback]");
   const protectedSections = [...document.querySelectorAll("[data-trigger-protected]")];
   const protectedControls = [...document.querySelectorAll("[data-trigger-control]")];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let releaseTimer = 0;
+  let heightFrame = 0;
 
   if (!warning || !openButton || protectedSections.length === 0) {
     return;
   }
 
-  const setMaterialsLocked = (locked) => {
-    document.body.classList.toggle("trigger-warning-active", locked);
-    warning.hidden = !locked;
+  const syncWarningHeight = () => {
+    window.cancelAnimationFrame(heightFrame);
+    heightFrame = window.requestAnimationFrame(() => {
+      if (warning.hidden) {
+        return;
+      }
 
+      const warningTop = warning.getBoundingClientRect().top + window.scrollY;
+      const finalSection = protectedSections.at(-1);
+      const protectedBottom = finalSection.getBoundingClientRect().bottom + window.scrollY;
+      const coverage = Math.max(window.innerHeight, protectedBottom - warningTop);
+
+      warning.style.setProperty("--trigger-warning-height", `${Math.ceil(coverage)}px`);
+    });
+  };
+
+  const setProtectedAccessibility = (locked) => {
     protectedSections.forEach((section) => {
       if (locked) {
         section.setAttribute("inert", "");
@@ -436,23 +460,74 @@
       control.disabled = locked;
       control.setAttribute("aria-disabled", String(locked));
     });
+  };
+
+  const setMaterialsLocked = (locked) => {
+    window.clearTimeout(releaseTimer);
+    document.body.classList.remove("trigger-warning-releasing");
+    document.body.classList.toggle("trigger-warning-active", locked);
+    warning.hidden = !locked;
+    warning.classList.remove("is-confirmed");
+
+    if (feedback) {
+      feedback.hidden = true;
+    }
+
+    if (keepButton) {
+      keepButton.setAttribute("aria-pressed", "false");
+    }
+
+    setProtectedAccessibility(locked);
+
+    if (locked) {
+      syncWarningHeight();
+    }
 
     window.dispatchEvent(new Event("guide:layout-change"));
   };
 
   openButton.addEventListener("click", () => {
     const firstProtectedHeading = protectedSections[0].querySelector("h2");
+    const finishRelease = () => {
+      setProtectedAccessibility(false);
+      document.body.classList.remove("trigger-warning-active", "trigger-warning-releasing");
+      warning.hidden = true;
+      window.dispatchEvent(new Event("guide:layout-change"));
 
-    setMaterialsLocked(false);
+      if (firstProtectedHeading) {
+        firstProtectedHeading.setAttribute("tabindex", "-1");
+        firstProtectedHeading.focus({ preventScroll: true });
+      }
+    };
 
-    if (firstProtectedHeading) {
-      firstProtectedHeading.setAttribute("tabindex", "-1");
-      firstProtectedHeading.focus({ preventScroll: true });
-    }
+    openButton.disabled = true;
+    document.body.classList.add("trigger-warning-releasing");
+    releaseTimer = window.setTimeout(() => {
+      openButton.disabled = false;
+      finishRelease();
+    }, reduceMotion ? 0 : 980);
   });
+
+  keepButton?.addEventListener("click", () => {
+    keepButton.setAttribute("aria-pressed", "true");
+    warning.classList.add("is-confirmed");
+
+    if (feedback) {
+      feedback.hidden = false;
+    }
+
+    syncWarningHeight();
+  });
+
+  const protectedResizeObserver = new ResizeObserver(syncWarningHeight);
+
+  protectedSections.forEach((section) => protectedResizeObserver.observe(section));
+  window.addEventListener("resize", syncWarningHeight);
+  window.addEventListener("guide:layout-change", syncWarningHeight);
 
   window.addEventListener("pagehide", () => setMaterialsLocked(true));
   window.addEventListener("pageshow", () => setMaterialsLocked(true));
+  setMaterialsLocked(true);
 })();
 
 (() => {

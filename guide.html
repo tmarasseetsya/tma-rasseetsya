@@ -7,6 +7,42 @@
     <title>Сексуализированное насилие</title>
     <script>
       (() => {
+        const root = document.documentElement;
+        const reveal = () => {
+          window.clearTimeout(window.__guideFontFallback);
+          root.classList.remove("guide-fonts-pending");
+          root.classList.add("guide-fonts-ready");
+        };
+
+        if (!("fonts" in document)) {
+          root.classList.add("guide-fonts-ready");
+          return;
+        }
+
+        root.classList.add("guide-fonts-pending");
+        window.__guideFontFallback = window.setTimeout(reveal, 3000);
+        document.addEventListener(
+          "DOMContentLoaded",
+          () => {
+            Promise.all([
+              document.fonts.load('700 1em "Cormorant Garamond Local"'),
+              document.fonts.load('600 1em "Cormorant Unicase Local"'),
+              document.fonts.load('500 1em "Montserrat Local"'),
+              document.fonts.load('300 1em "Montserrat Light Local"'),
+              document.fonts.load('400 1em "Montserrat Regular Local"')
+            ]).then(reveal, reveal);
+          },
+          { once: true }
+        );
+      })();
+    </script>
+    <link rel="preload" href="./fonts/CormorantGaramond-Bold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="./fonts/CormorantUnicase-SemiBold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="./fonts/Montserrat-Medium.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="./fonts/Montserrat-Light.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="./fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <script>
+      (() => {
         const returnFromGuideKey = "darkness-disperses:return-from-guide";
 
         const markReturnFromGuide = () => {
@@ -42,8 +78,8 @@
         window.addEventListener("pagehide", markReturnFromGuide);
       })();
     </script>
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./footer.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260816-1" />
+    <link rel="stylesheet" href="./footer.css?v=20260816-1" />
   </head>
   <body class="trigger-warning-active">
     <main>
@@ -241,10 +277,18 @@
               >
                 Открыть материалы
               </button>
-              <a class="trigger-warning-button trigger-warning-button-safe" href="./index.html">
+              <button
+                class="trigger-warning-button trigger-warning-button-safe"
+                type="button"
+                data-trigger-keep
+                aria-pressed="false"
+              >
                 Не открывать материалы
-              </a>
+              </button>
             </div>
+            <p class="trigger-warning-feedback" data-trigger-feedback role="status" hidden>
+              Материалы остаются скрытыми. Решение можно изменить в любой момент — кнопка «Открыть материалы» останется здесь. Можно также <a href="./index.html">вернуться на главную</a>.
+            </p>
           </div>
         </div>
       </section>
@@ -1052,7 +1096,14 @@
         </div>
       </section>
 
-      <section class="invisible-section" id="contexts" aria-labelledby="invisible-title">
+      <section
+        class="invisible-section"
+        id="contexts"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="invisible-title"
+      >
         <div class="invisible-frame">
           <h2 class="forms-title" id="invisible-title">НЕВИДИМОЕ НАСИЛИЕ</h2>
           <p class="forms-subtitle">
@@ -1714,7 +1765,15 @@
         </div>
       </section>
 
-      <section class="contexts-summary-section" id="contexts-summary-section-panel" data-collapse-member="invisible" aria-labelledby="contexts-summary-title">
+      <section
+        class="contexts-summary-section"
+        id="contexts-summary-section-panel"
+        data-collapse-member="invisible"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="contexts-summary-title"
+      >
         <div class="contexts-summary-frame">
           <div class="contexts-summary-card">
             <h2 class="contexts-summary-title" id="contexts-summary-title">
@@ -2179,6 +2238,6 @@
         </p>
       </article>
     </dialog>
-    <script src="./script.js"></script>
+    <script src="./script.js?v=20260816-1"></script>
   </body>
 </html>

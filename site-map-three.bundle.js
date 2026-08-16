@@ -10272,6 +10272,7 @@
     };
     scene.add(model);
     renderer.setClearColor(0, 0);
+    renderer.setClearAlpha(0);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, config.maxPixelRatio));
     const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
     const ease = (value) => {
