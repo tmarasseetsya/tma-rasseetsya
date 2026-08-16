@@ -78,8 +78,8 @@
         window.addEventListener("pagehide", markReturnFromGuide);
       })();
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260816-1" />
-    <link rel="stylesheet" href="./footer.css?v=20260816-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260817-1" />
+    <link rel="stylesheet" href="./footer.css?v=20260817-1" />
   </head>
   <body class="trigger-warning-active">
     <main>
@@ -230,7 +230,54 @@
         </div>
       </section>
 
-      <section class="forms-intro-section" id="forms" aria-labelledby="forms-intro-title">
+      <section
+        class="trigger-warning"
+        id="guide-trigger-warning"
+        role="region"
+        aria-labelledby="guide-trigger-warning-title"
+        aria-describedby="guide-trigger-warning-copy"
+      >
+        <div class="trigger-warning-frame">
+          <div class="trigger-warning-panel">
+            <h2 class="trigger-warning-title" id="guide-trigger-warning-title">
+              Предупреждение о триггерах (tw)
+            </h2>
+            <p class="trigger-warning-copy" id="guide-trigger-warning-copy">
+              Материалы этой страницы являются триггерными для переживших насилие: могут возникать психологические и физиологические реакции. Будьте бережны к себе и не читайте эти материалы, если чувствуете себя уязвимо.<br />
+              Эта страница для тех, кто не переживал насилие и хочет начать разбираться в этой проблеме.
+            </p>
+            <div class="trigger-warning-actions">
+              <button
+                class="trigger-warning-button trigger-warning-button-open"
+                type="button"
+                data-trigger-open
+              >
+                Открыть материалы
+              </button>
+              <button
+                class="trigger-warning-button trigger-warning-button-safe"
+                type="button"
+                data-trigger-keep
+                aria-pressed="false"
+              >
+                Не открывать материалы
+              </button>
+            </div>
+            <p class="trigger-warning-feedback" data-trigger-feedback role="status" hidden>
+              Материалы остаются скрытыми. Мы выражаем Вам поддержку и понимание и продолжаем работать над большим количеством материалов для Вас.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="forms-intro-section"
+        id="forms"
+        data-trigger-protected
+        inert
+        aria-hidden="true"
+        aria-labelledby="forms-intro-title"
+      >
         <div class="forms-intro-frame">
           <h2 class="forms-title" id="forms-intro-title">НАСИЛИЕ - МНОГОЛИКО</h2>
           <p class="forms-subtitle">
@@ -251,45 +298,6 @@
               ></button>
             </span>
           </p>
-        </div>
-      </section>
-
-      <section
-        class="trigger-warning"
-        id="guide-trigger-warning"
-        role="region"
-        aria-labelledby="guide-trigger-warning-title"
-        aria-describedby="guide-trigger-warning-copy"
-      >
-        <div class="trigger-warning-frame">
-          <div class="trigger-warning-panel">
-            <h2 class="trigger-warning-title" id="guide-trigger-warning-title">
-              Предупреждение о триггерах (tw)
-            </h2>
-            <p class="trigger-warning-copy" id="guide-trigger-warning-copy">
-              Материалы этой страницы являются триггерными для переживших насилие: могут возникать психологические и физиологические реакции. Будьте бережны к себе и не читайте эти материалы, если чувствуете себя уязвимо. Эта страница для тех, кто не переживал насилие и хочет начать разбираться в этой проблеме.
-            </p>
-            <div class="trigger-warning-actions">
-              <button
-                class="trigger-warning-button trigger-warning-button-open"
-                type="button"
-                data-trigger-open
-              >
-                Открыть материалы
-              </button>
-              <button
-                class="trigger-warning-button trigger-warning-button-safe"
-                type="button"
-                data-trigger-keep
-                aria-pressed="false"
-              >
-                Не открывать материалы
-              </button>
-            </div>
-            <p class="trigger-warning-feedback" data-trigger-feedback role="status" hidden>
-              Материалы остаются скрытыми. Решение можно изменить в любой момент — кнопка «Открыть материалы» останется здесь. Можно также <a href="./index.html">вернуться на главную</a>.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -2238,6 +2246,6 @@
         </p>
       </article>
     </dialog>
-    <script src="./script.js?v=20260816-1"></script>
+    <script src="./script.js?v=20260817-1"></script>
   </body>
 </html>
