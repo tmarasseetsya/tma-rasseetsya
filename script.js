@@ -1202,3 +1202,90 @@
     });
   });
 })();
+
+(() => {
+  const compactTypographyQuery = window.matchMedia("(max-width: 1100px)");
+  const originalTextByNode = new Map();
+  const shortWords = [
+    "между",
+    "через",
+    "либо",
+    "если",
+    "когда",
+    "после",
+    "перед",
+    "чтобы",
+    "без",
+    "для",
+    "или",
+    "изо",
+    "как",
+    "над",
+    "обо",
+    "ото",
+    "под",
+    "при",
+    "что",
+    "во",
+    "до",
+    "же",
+    "за",
+    "из",
+    "ко",
+    "ли",
+    "на",
+    "не",
+    "ни",
+    "но",
+    "об",
+    "от",
+    "по",
+    "со",
+    "бы",
+    "а",
+    "в",
+    "и",
+    "к",
+    "о",
+    "с",
+    "у"
+  ];
+  const shortWordPattern = new RegExp(
+    `(^|[\\s([{"'«„—–-])(${shortWords.join("|")})[ \\t\\r\\n]+(?=[А-ЯЁа-яё])`,
+    "giu"
+  );
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+
+      if (
+        !node.data.trim() ||
+        !parent ||
+        parent.closest("script, style, noscript, pre, code, .site-footer, [data-preserve-breaking]")
+      ) {
+        return NodeFilter.FILTER_REJECT;
+      }
+
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  while (walker.nextNode()) {
+    originalTextByNode.set(walker.currentNode, walker.currentNode.data);
+  }
+
+  const applyCompactTypography = () => {
+    originalTextByNode.forEach((originalText, node) => {
+      if (!node.isConnected) {
+        return;
+      }
+
+      node.data = compactTypographyQuery.matches
+        ? originalText.replace(shortWordPattern, "$1$2\u00a0")
+        : originalText;
+    });
+  };
+
+  compactTypographyQuery.addEventListener("change", applyCompactTypography);
+  applyCompactTypography();
+})();

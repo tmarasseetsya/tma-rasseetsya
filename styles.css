@@ -183,6 +183,14 @@ main {
   text-wrap: pretty;
 }
 
+.trigger-warning-copy > span {
+  display: block;
+}
+
+.trigger-warning-copy > span + span {
+  margin-top: 12px;
+}
+
 .trigger-warning-actions {
   display: flex;
   justify-content: center;
@@ -2134,6 +2142,14 @@ main {
   max-width: 320px;
 }
 
+.partner-title .title-tooltip-anchor,
+.sex-work-title .title-tooltip-anchor,
+.detention-title .title-tooltip-anchor,
+.conflict-title .title-tooltip-anchor,
+.rape-title .title-tooltip-anchor {
+  display: contents;
+}
+
 .during-title,
 .harassment-title,
 .grooming-title,
@@ -3199,7 +3215,7 @@ html.guide-fonts-pending .svetik-support {
   }
 
   .svetik-patronus {
-    top: clamp(-186px, calc(8px - 30.6vw), -92px);
+    top: clamp(-178px, calc(16px - 30.6vw), -84px);
     right: clamp(-8px, -1.7vw, -6px);
     width: clamp(195px, 60vw, 380px);
     opacity: 1;
@@ -3338,7 +3354,6 @@ html.guide-fonts-pending .svetik-support {
     white-space: normal;
   }
 
-  .intro-title br,
   .intro-card br,
   .intro-using br,
   .form-card br,
@@ -3364,7 +3379,6 @@ html.guide-fonts-pending .svetik-support {
     content: " ";
   }
 
-  .intro-title br::after,
   .intro-card br::after,
   .intro-using br::after,
   .form-card br::after,
@@ -3411,7 +3425,7 @@ html.guide-fonts-pending .svetik-support {
   .methodology-step-title {
     max-width: 100%;
     overflow-wrap: break-word;
-    text-wrap: balance;
+    text-wrap: wrap;
     white-space: normal;
   }
 
@@ -3573,6 +3587,45 @@ html.guide-fonts-pending .svetik-support {
 
   .methodology-tooltip-row .info-tooltip-trigger::after {
     font-size: 16px;
+  }
+
+  .partner-title .title-tooltip-anchor,
+  .sex-work-title .title-tooltip-anchor,
+  .detention-title .title-tooltip-anchor,
+  .conflict-title .title-tooltip-anchor,
+  .rape-title .title-tooltip-anchor {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .partner-title .partner-title-tooltip,
+  .sex-work-title .sex-work-title-tooltip,
+  .detention-title .detention-title-tooltip,
+  .conflict-title .conflict-title-tooltip,
+  .rape-title .rape-title-tooltip {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: inline-block;
+    width: 22px;
+    height: 1em;
+    margin-left: -2px;
+    vertical-align: -0.08em;
+  }
+
+  .partner-title-tooltip .info-tooltip-trigger,
+  .sex-work-title-tooltip .info-tooltip-trigger,
+  .detention-title-tooltip .info-tooltip-trigger,
+  .conflict-title-tooltip .info-tooltip-trigger,
+  .rape-title-tooltip .info-tooltip-trigger {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .title-tooltip-anchor .info-tooltip-content {
+    white-space: normal;
   }
 
   .contexts-summary-card {
@@ -3847,6 +3900,11 @@ html.guide-fonts-pending .svetik-support {
     font-size: clamp(38px, 12vw, 50px);
   }
 
+  .intro-title {
+    font-size: clamp(24px, 7vw, 32px);
+    line-height: 0.94;
+  }
+
   .methodology-title {
     max-width: 100%;
     font-size: clamp(28px, 9vw, 38px);
@@ -3944,6 +4002,11 @@ html.guide-fonts-pending .svetik-support {
     grid-column: 1;
   }
 
+  .intro-using {
+    margin-top: 16px;
+    margin-bottom: -8px;
+  }
+
   .intro-card,
   .form-card,
   .partner-card,
@@ -4000,6 +4063,16 @@ html.guide-fonts-pending .svetik-support {
     font-size: 21px;
   }
 
+  .intro-card-force,
+  .intro-card-threats,
+  .intro-card-manipulation,
+  .intro-card-deception,
+  .intro-card-helpless {
+    min-height: 112px;
+    padding-top: 34px;
+    padding-bottom: 20px;
+  }
+
   .collapse-toggle-group {
     width: 32px;
     height: 32px;
@@ -4008,6 +4081,15 @@ html.guide-fonts-pending .svetik-support {
   .info-tooltip {
     top: 16px;
     right: 16px;
+  }
+
+  .partner-title .partner-title-tooltip,
+  .sex-work-title .sex-work-title-tooltip,
+  .detention-title .detention-title-tooltip,
+  .conflict-title .conflict-title-tooltip,
+  .rape-title .rape-title-tooltip {
+    top: auto;
+    right: auto;
   }
 
   .info-tooltip-trigger,
